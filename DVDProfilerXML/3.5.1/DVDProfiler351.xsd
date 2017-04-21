@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Collection" type="CollectionType" />
+  <xs:element name="DVD" type="DVDType" />
+  <xs:element name="CastInformation" type="CastInformationType"/>
+  <xs:element name="CrewInformation" type="CrewInformationType"/>
+  <xs:complexType name="CrewInformationType">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" minOccurs="1"/>
+      <xs:element name="Credits" type="CreditsType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CastInformationType">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" minOccurs="1" />
+      <xs:element name="Actors" type="ActorsType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CollectionType">
+    <xs:sequence>
+      <xs:element name="DVD" type="DVDType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActorType">
+    <xs:attribute name="FirstName" type="xs:string" use="required"/>
+    <xs:attribute name="MiddleName" type="xs:string" use="required"/>
+    <xs:attribute name="LastName" type="xs:string" use="required"/>
+    <xs:attribute name="BirthYear" type="xs:int" use="required"/>
+    <xs:attribute name="Role" type="xs:string" use="required"/>
+    <xs:attribute name="CreditedAs" type="xs:string" use="required"/>
+    <xs:attribute name="Voice" type="xs:string" use="required"/>
+    <xs:attribute name="Uncredited" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="ActorsType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Divider" type="DividerType"/>
+      <xs:element name="Actor" type="ActorType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="AudioType">
+    <xs:sequence>
+      <xs:element name="AudioTrack" type="AudioTrackType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AudioTrackType">
+    <xs:sequence>
+      <xs:element name="AudioContent" type="xs:string"/>
+      <xs:element name="AudioFormat" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BoxSetType">
+    <xs:sequence>
+      <xs:element name="Parent" type="xs:string"/>
+      <xs:element name="Contents" type="ContentsType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContentsType">
+    <xs:sequence>
+      <xs:element name="Content" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreditType">
+    <xs:attribute name="FirstName" type="xs:string" use="required"/>
+    <xs:attribute name="MiddleName" type="xs:string" use="required"/>
+    <xs:attribute name="LastName" type="xs:string" use="required"/>
+    <xs:attribute name="BirthYear" type="xs:int" use="required"/>
+    <xs:attribute name="CreditType" type="xs:string" use="required"/>
+    <xs:attribute name="CreditSubtype" type="xs:string" use="required"/>
+    <xs:attribute name="CreditedAs" type="xs:string" use="required"/>
+    <xs:attribute name="CustomRole" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="CreditsType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Divider" type="DividerType"/>
+      <xs:element name="Credit" type="CreditType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="DVDType">
+    <xs:sequence>
+      <xs:element name="ProfileTimestamp" type="xs:dateTime"/>
+      <xs:element name="ID" type="xs:string"/>
+      <xs:element name="MediaTypes" type="MediaTypesType"/>
+      <xs:element name="UPC" type="xs:string"/>
+      <xs:element name="CollectionNumber" type="xs:string"/>
+      <xs:element name="CollectionType">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Owned"/>
+            <xs:enumeration value="Ordered"/>
+            <xs:enumeration value="Wish List"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Title" type="xs:string"/>
+      <xs:element name="DistTrait" type="xs:string"/>
+      <xs:element name="OriginalTitle" type="xs:string"/>
+      <xs:element name="CountryOfOrigin" type="xs:string"/>
+      <xs:element name="ProductionYear" type="xs:int"/>
+      <xs:element name="Released" type="xs:date" minOccurs="0"/>
+      <xs:element name="RunningTime" type="xs:int"/>
+      <xs:element name="RatingSystem" type="xs:string"/>
+      <xs:element name="Rating" type="xs:string"/>
+      <xs:element name="RatingAge" type="xs:int"/>
+      <xs:element name="RatingVariant" type="xs:int"/>
+      <xs:element name="CaseType" type="xs:string"/>
+      <xs:element name="CaseSlipCover" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="Genres" type="GenreType"/>
+      <xs:element name="Regions" type="RegionsType"/>
+      <xs:element name="Format" type="FormatType"/>
+      <xs:element name="Features" type="FeaturesType"/>
+      <xs:element name="Studios" type="StudiosType"/>
+      <xs:element name="MediaCompanies" type="MediaCompaniesType"/>
+      <xs:element name="Audio" type="AudioType"/>
+      <xs:element name="Subtitles" type="SubtitlesType"/>
+      <xs:element name="SRP" type="PriceType"/>
+      <xs:element name="Actors" type="ActorsType"/>
+      <xs:element name="Credits" type="CreditsType"/>
+      <xs:element name="Overview" type="xs:string" />
+      <xs:element name="EasterEggs" type="xs:string"/>
+      <xs:element name="Discs" type="DiscsType"/>
+      <xs:element name="SortTitle" type="xs:string"/>
+      <xs:element name="LastEdited" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="WishPriority" type="xs:int"/>
+      <xs:element name="PurchaseInfo" type="PurchaseInfoType"/>
+      <xs:element name="Review" type="ReviewType"/>
+      <xs:element name="Events" type="EventsType"/>
+      <xs:element name="BoxSet" type="BoxSetType"/>
+      <xs:element name="LoanInfo" type="LoanInfoType"/>
+      <xs:element name="Notes" type="xs:string"/>
+      <xs:element name="Tags" type="TagsType"/>
+      <xs:element name="Locks" type="LocksType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DiscType">
+    <xs:sequence>
+      <xs:element name="DescriptionSideA" type="xs:string"/>
+      <xs:element name="DescriptionSideB" type="xs:string"/>
+      <xs:element name="DiscIDSideA" type="xs:string"/>
+      <xs:element name="DiscIDSideB" type="xs:string"/>
+      <xs:element name="LabelSideA" type="xs:string"/>
+      <xs:element name="LabelSideB" type="xs:string"/>
+      <xs:element name="DualLayeredSideA" type="xs:boolean"/>
+      <xs:element name="DualLayeredSideB" type="xs:boolean"/>
+      <xs:element name="DualSided" type="xs:boolean"/>
+      <xs:element name="Location" type="xs:string"/>
+      <xs:element name="Slot" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DiscsType">
+    <xs:sequence >
+      <xs:element name="Disc" type="DiscType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DividerType">
+    <xs:attribute name="Caption" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:element name="EventType">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Watched"/>
+            <xs:enumeration value="Returned"/>
+            <xs:enumeration value="Borrowed"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Timestamp" type="xs:dateTime"/>
+      <xs:element name="User" type="UserType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EventsType">
+    <xs:sequence>
+      <xs:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FeaturesType" >
+    <xs:sequence>
+      <xs:element name="FeatureSceneAccess" type="xs:boolean"/>
+      <xs:element name="FeatureCommentary" type="xs:boolean"/>
+      <xs:element name="FeatureTrailer" type="xs:boolean"/>
+      <xs:element name="FeaturePhotoGallery" type="xs:boolean"/>
+      <xs:element name="FeatureDeletedScenes" type="xs:boolean"/>
+      <xs:element name="FeatureMakingOf" type="xs:boolean"/>
+      <xs:element name="FeatureProductionNotes" type="xs:boolean"/>
+      <xs:element name="FeatureGame" type="xs:boolean"/>
+      <xs:element name="FeatureDVDROMContent" type="xs:boolean"/>
+      <xs:element name="FeatureMultiAngle" type="xs:boolean"/>
+      <xs:element name="FeatureMusicVideos" type="xs:boolean"/>
+      <xs:element name="FeatureInterviews" type="xs:boolean"/>
+      <xs:element name="FeatureStoryboardComparisons" type="xs:boolean"/>
+      <xs:element name="FeatureOuttakes" type="xs:boolean"/>
+      <xs:element name="FeatureClosedCaptioned" type="xs:boolean"/>
+      <xs:element name="FeatureTHXCertified" type="xs:boolean"/>
+      <xs:element name="OtherFeatures" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FormatType">
+    <xs:sequence>
+      <xs:element name="FormatAspectRatio" type="xs:string"/>
+      <xs:element name="FormatVideoStandard">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="NTSC"/>
+            <xs:enumeration value="PAL"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="FormatLetterBox" type="xs:boolean"/>
+      <xs:element name="FormatPanAndScan" type="xs:boolean"/>
+      <xs:element name="FormatFullFrame" type="xs:boolean"/>
+      <xs:element name="Format16X9" type="xs:boolean"/>
+      <xs:element name="FormatDualSided" type="xs:boolean"/>
+      <xs:element name="FormatDualLayered" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenreType">
+    <xs:sequence>
+      <xs:element name="Genre" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LoanInfoType">
+    <xs:sequence>
+      <xs:element name="Loaned" type="xs:boolean"/>
+      <xs:element name="Due" type="xs:date" minOccurs="0"/>
+      <xs:element name="User" type="UserType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocksType">
+    <xs:sequence>
+      <xs:element name="Entire" type="xs:boolean"/>
+      <xs:element name="Covers" type="xs:boolean"/>
+      <xs:element name="Title" type="xs:boolean"/>
+      <xs:element name="MediaType" type="xs:boolean"/>
+      <xs:element name="Overview" type="xs:boolean"/>
+      <xs:element name="Regions" type="xs:boolean"/>
+      <xs:element name="Genres" type="xs:boolean"/>
+      <xs:element name="SRP" type="xs:boolean"/>
+      <xs:element name="Studios" type="xs:boolean"/>
+      <xs:element name="DiscInformation" type="xs:boolean"/>
+      <xs:element name="Cast" type="xs:boolean"/>
+      <xs:element name="Crew" type="xs:boolean"/>
+      <xs:element name="Features" type="xs:boolean"/>
+      <xs:element name="AudioTracks" type="xs:boolean"/>
+      <xs:element name="Subtitles" type="xs:boolean"/>
+      <xs:element name="EasterEggs" type="xs:boolean"/>
+      <xs:element name="RunningTime" type="xs:boolean"/>
+      <xs:element name="ReleaseDate" type="xs:boolean"/>
+      <xs:element name="ProductionYear" type="xs:boolean"/>
+      <xs:element name="CaseType" type="xs:boolean"/>
+      <xs:element name="VideoFormats" type="xs:boolean"/>
+      <xs:element name="Rating" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MediaTypesType">
+    <xs:sequence>
+      <xs:element name="DVD" type="xs:boolean"/>
+      <xs:element name="HDDVD" type="xs:boolean"/>
+      <xs:element name="BluRay" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PurchaseInfoType">
+    <xs:sequence>
+      <xs:element name="PurchasePrice" type="PriceType"/>
+      <xs:element name="PurchasePlace" type="xs:string"/>
+      <xs:element name="PurchasePlaceType" type="xs:string"/>
+      <xs:element name="PurchasePlaceWebsite" type="xs:string"/>
+      <xs:element name="PurchaseDate" type="xs:date" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegionsType">
+    <xs:sequence>
+      <xs:element name="Region" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReviewType">
+    <xs:attribute name="Film" type="xs:int" use="required"/>
+    <xs:attribute name="Video" type="xs:int" use="required"/>
+    <xs:attribute name="Audio" type="xs:int" use="required"/>
+    <xs:attribute name="Extras" type="xs:int" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="StudiosType">
+    <xs:sequence >
+      <xs:element name="Studio" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MediaCompaniesType">
+    <xs:sequence >
+      <xs:element name="MediaCompany" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubtitlesType">
+    <xs:sequence >
+      <xs:element name="Subtitle" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TagType">
+    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="FullName" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="TagsType">
+    <xs:sequence >
+      <xs:element name="Tag" type="TagType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserType">
+    <xs:attribute name="FirstName" type="xs:string" use="required"/>
+    <xs:attribute name="LastName" type="xs:string" use="required"/>
+    <xs:attribute name="EmailAddress" type="xs:string" use="required"/>
+    <xs:attribute name="PhoneNumber" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="PriceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:float">
+        <xs:attribute name="DenominationType" type="xs:string" use="required"/>
+        <xs:attribute name="DenominationDesc" type="xs:string" use="required"/>
+        <xs:attribute name="FormattedValue" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2E90CC6F-892E-45B3-8812-EE52FFA3B222}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
+    <AssemblyName>DVDProfilerXML</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\DVDProfilerXML\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>DVDProfilerXML.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="3.9.0\CollectionTree390.cs" />
+    <Compile Include="3.9.0\CrewSorter390.cs" />
+    <Compile Include="3.9.0\DVDProfiler390.cs">
+      <DependentUpon>DVDProfiler390.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.9.0\DVDProfiler390.NotGenerated.cs">
+      <DependentUpon>DVDProfiler390.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.8.1\CollectionTree381.cs" />
+    <Compile Include="3.8.1\CrewSorter381.cs" />
+    <Compile Include="3.9.5\CollectionTree395.cs" />
+    <Compile Include="3.9.5\CrewSorter395.cs" />
+    <Compile Include="3.9.5\DVDProfiler395.cs">
+      <DependentUpon>DVDProfiler395.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.9.5\DVDProfiler395.NotGenerated.cs">
+      <DependentUpon>DVDProfiler395.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.9.5\Utilities395.cs" />
+    <Compile Include="IPerson.cs" />
+    <Compile Include="PersonKey.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="3.9.0\Utilities390.cs" />
+    <Compile Include="3.8.1\Utilities381.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3.6.0\Localities360.xsd" />
+    <Compile Include="3.6.0\Localities360.cs">
+      <DependentUpon>Localities360.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3.5.1\DVDProfiler351.xsd" />
+    <Compile Include="3.5.1\DVDProfiler351.cs">
+      <DependentUpon>DVDProfiler351.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3.6.0\DVDProfiler360.xsd">
+    </EmbeddedResource>
+    <Compile Include="3.6.0\DVDProfiler360.cs">
+      <DependentUpon>DVDProfiler360.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3.8.0\DVDProfiler380.xsd" />
+    <Compile Include="3.8.0\DVDProfiler380.cs">
+      <DependentUpon>DVDProfiler380.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.8.0\DVDProfiler380.NotGenerated.cs">
+      <DependentUpon>DVDProfiler380.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3.8.1\DVDProfiler381.xsd" />
+    <Compile Include="3.8.1\DVDProfiler381.cs">
+      <DependentUpon>DVDProfiler381.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.8.1\DVDProfiler381.NotGenerated.cs">
+      <DependentUpon>DVDProfiler381.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3.8.1\COOs381.xsd" />
+    <Compile Include="3.8.1\COOs381.cs">
+      <DependentUpon>COOs381.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.8.1\COOs381.NotGerated.cs">
+      <DependentUpon>COOs381.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3.8.1\Localities381.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="3.8.1\Localities381.cs">
+      <DependentUpon>Localities381.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="3.8.1\Localities381.NotGenerated.cs">
+      <DependentUpon>Localities381.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="3.9.0\DVDProfiler390.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="3.9.5\DVDProfiler395.xsd" />
+    <None Include="DJDSOFT.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DVDProfilerXML.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DVDProfilerHelper\DVDProfilerHelper\DVDProfilerHelper.csproj">
+      <Project>{461dacca-8ebf-4c03-ad1a-c438e4eb3b36}</Project>
+      <Name>DVDProfilerHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
