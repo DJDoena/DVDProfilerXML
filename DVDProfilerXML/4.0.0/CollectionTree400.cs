@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version395
+namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
     public sealed class CollectionTree
     {

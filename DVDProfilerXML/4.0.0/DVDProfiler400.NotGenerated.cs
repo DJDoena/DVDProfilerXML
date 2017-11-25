@@ -7,10 +7,10 @@ using System.Xml.Serialization;
 using DoenaSoft.DVDProfiler.DVDProfilerHelper;
 
 // 
-// xsd.exe /c /l:cs /f /n:DoenaSoft.DVDProfiler.DVDProfilerXML.Version395 DVDProfiler395.xsd
+// xsd.exe /c /l:cs /f /n:DoenaSoft.DVDProfiler.DVDProfilerXML.Version400 DVDProfiler400.xsd
 //
 
-namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version395
+namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
     public partial class Collection
     {
@@ -852,7 +852,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version395
         public Format()
         {
             AspectRatio = String.Empty;
-            Color = new FormatColor();
+            Color = new ColorFormat();
             Dimensions = new Dimensions();
         }
 
@@ -871,7 +871,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version395
         public XmlNode[] OpenElements;
     }
 
-    public partial class FormatColor
+    public partial class ColorFormat
     {
         public override String ToString()
             => ($"Color: {Color}, B/W: {BlackAndWhite}, Colorized: {Colorized}, Mixed: {Mixed}");

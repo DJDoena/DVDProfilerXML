@@ -64,15 +64,15 @@
     </Compile>
     <Compile Include="3.8.1\CollectionTree381.cs" />
     <Compile Include="3.8.1\CrewSorter381.cs" />
-    <Compile Include="3.9.5\CollectionTree395.cs" />
-    <Compile Include="3.9.5\CrewSorter395.cs" />
-    <Compile Include="3.9.5\DVDProfiler395.cs">
-      <DependentUpon>DVDProfiler395.xsd</DependentUpon>
+    <Compile Include="4.0.0\CollectionTree400.cs" />
+    <Compile Include="4.0.0\CrewSorter400.cs" />
+    <Compile Include="4.0.0\DVDProfiler400.cs">
+      <DependentUpon>DVDProfiler400.xsd</DependentUpon>
     </Compile>
-    <Compile Include="3.9.5\DVDProfiler395.NotGenerated.cs">
-      <DependentUpon>DVDProfiler395.xsd</DependentUpon>
+    <Compile Include="4.0.0\DVDProfiler400.NotGenerated.cs">
+      <DependentUpon>DVDProfiler400.xsd</DependentUpon>
     </Compile>
-    <Compile Include="3.9.5\Utilities395.cs" />
+    <Compile Include="4.0.0\Utilities400.cs" />
     <Compile Include="IPerson.cs" />
     <Compile Include="PersonKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,9 +126,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="3.8.1\Localities381.xsd">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="3.8.1\Localities381.xsd" />
     <Compile Include="3.8.1\Localities381.cs">
       <DependentUpon>Localities381.xsd</DependentUpon>
     </Compile>
@@ -137,10 +135,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="3.9.0\DVDProfiler390.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="3.9.5\DVDProfiler395.xsd" />
+    <None Include="3.9.0\DVDProfiler390.xsd" />
+    <None Include="4.0.0\DVDProfiler400.xsd" />
     <None Include="DJDSOFT.ICO">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

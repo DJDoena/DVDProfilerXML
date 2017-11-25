@@ -264,7 +264,8 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element name="FormatColor" type="FormatColor" minOccurs="1"/>
+      <xs:element name="ColorFormat" type="ColorFormat" minOccurs="1"/>
+      <xs:element name="DynamicRange" type="DynamicRange" minOccurs="0" maxOccurs="1"/>
       <xs:element name="FormatLetterBox" type="xs:boolean" minOccurs="1"/>
       <xs:element name="FormatPanAndScan" type="xs:boolean" minOccurs="1"/>
       <xs:element name="FormatFullFrame" type="xs:boolean" minOccurs="1"/>
@@ -400,12 +401,18 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="FormatColor">
+  <xs:complexType name="ColorFormat">
     <xs:sequence>
       <xs:element name="ClrColor" type="xs:boolean" minOccurs="1"/>
       <xs:element name="ClrBlackAndWhite" type="xs:boolean" minOccurs="1"/>
       <xs:element name="ClrColorized" type="xs:boolean" minOccurs="1"/>
       <xs:element name="ClrMixed" type="xs:boolean" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DynamicRange">
+    <xs:sequence>
+      <xs:element name="DRHDR10" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="DRDolbyVision" type="xs:boolean" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Dimensions">

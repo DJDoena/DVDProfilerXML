@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DoenaSoft.DVDProfiler.DVDProfilerHelper;
 
-namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version395
+namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
     public static class Utilities
     {
