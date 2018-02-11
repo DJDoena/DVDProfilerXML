@@ -27,7 +27,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version390
         {
             encoding = encoding ?? DefaultEncoding;
 
-            Serializer<Collection>.Serialize(fileName, this, encoding);
+            DVDProfilerSerializer<Collection>.Serialize(fileName, this, encoding);
         }
 
         public override String ToString()
@@ -113,7 +113,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version390
         {
             encoding = encoding ?? DefaultEncoding;
 
-            Serializer<DVD>.Serialize(fileName, this, encoding);
+            DVDProfilerSerializer<DVD>.Serialize(fileName, this, encoding);
         }
 
         public override String ToString()
@@ -901,7 +901,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version390
         {
             encoding = encoding ?? DefaultEncoding;
 
-            Serializer<CastInformation>.Serialize(fileName, this, encoding);
+            DVDProfilerSerializer<CastInformation>.Serialize(fileName, this, encoding);
         }
 
         public override String ToString()
@@ -944,7 +944,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version390
         {
             encoding = encoding ?? DefaultEncoding;
 
-            Serializer<CrewInformation>.Serialize(fileName, this, encoding);
+            DVDProfilerSerializer<CrewInformation>.Serialize(fileName, this, encoding);
         }
 
         public override String ToString()
