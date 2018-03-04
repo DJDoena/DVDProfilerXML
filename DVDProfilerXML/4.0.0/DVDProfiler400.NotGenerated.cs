@@ -52,7 +52,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         public XmlNode[] OpenElements;
     }
 
-    public partial class DVD : IComparable<DVD>
+    public partial class DVD : IComparable<DVD>, IEquatable<DVD>
     {
         public DVD()
         {
@@ -143,16 +143,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         }
 
         public override Boolean Equals(Object obj)
-        {
-            DVD other = obj as DVD;
-
-            if (other == null)
-            {
-                return (false);
-            }
-
-            return (ID == other.ID);
-        }
+            => Equals(obj as DVD);
 
         public override Int32 GetHashCode()
             => (ID.GetHashCode());
@@ -164,6 +155,13 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         public Int32 CompareTo(DVD other)
             => ((other == null) ? 1 : Utilities.CompareSortTitle(this, other));
+
+        #endregion
+
+        #region IEquatable<DVD>
+
+        public Boolean Equals(DVD other)
+            => ((other != null) ? (ID == other.ID) : false);
 
         #endregion
     }
