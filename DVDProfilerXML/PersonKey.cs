@@ -16,53 +16,37 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
         {
             #region IPerson 
 
-            public String LastName { get; set; }
+            public string LastName { get; set; }
 
-            public String MiddleName { get; set; }
+            public string MiddleName { get; set; }
 
-            public String FirstName { get; set; }
+            public string FirstName { get; set; }
 
-            public Int32 BirthYear { get; set; }
+            public int BirthYear { get; set; }
 
-            public String CreditedAs { get; set; }
+            public string CreditedAs { get; set; }
 
             #endregion
 
             internal Person(IPerson person)
             {
-                if (String.IsNullOrEmpty(person.LastName) == false)
-                {
-                    LastName = person.LastName;
-                }
-                else
-                {
-                    LastName = String.Empty;
-                }
-                if (String.IsNullOrEmpty(person.MiddleName) == false)
-                {
-                    MiddleName = person.MiddleName;
-                }
-                else
-                {
-                    MiddleName = String.Empty;
-                }
-                if (String.IsNullOrEmpty(person.FirstName) == false)
-                {
-                    FirstName = person.FirstName;
-                }
-                else
-                {
-                    FirstName = String.Empty;
-                }
+                LastName = string.IsNullOrEmpty(person.LastName) == false
+                    ? person.LastName
+                    : string.Empty;
+
+                MiddleName = string.IsNullOrEmpty(person.MiddleName) == false
+                    ? person.MiddleName
+                    : string.Empty;
+
+                FirstName = string.IsNullOrEmpty(person.FirstName) == false
+                    ? person.FirstName
+                    : string.Empty;
+
                 BirthYear = person.BirthYear;
-                if (String.IsNullOrEmpty(person.CreditedAs) == false)
-                {
-                    CreditedAs = person.CreditedAs;
-                }
-                else
-                {
-                    CreditedAs = String.Empty;
-                }
+
+                CreditedAs = string.IsNullOrEmpty(person.CreditedAs) == false
+                    ? person.CreditedAs
+                    : string.Empty;
             }
         }
 
@@ -70,104 +54,103 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 
         #region Fields
 
-        private Person m_KeyData;
+        private readonly Person _keyData;
 
-        private Int32 m_HashCode;
+        private readonly int _hashCode;
 
         #endregion
 
         #region Properties
 
-        public IPerson KeyData
-            => (new Person(m_KeyData));
+        public IPerson KeyData => new Person(_keyData);
 
-        public String FormattedName
+        public string FormattedName
         {
             get
             {
-                StringBuilder name = new StringBuilder();
+                var name = new StringBuilder();
 
-                if (String.IsNullOrEmpty(m_KeyData.FirstName) == false)
+                if (string.IsNullOrEmpty(_keyData.FirstName) == false)
                 {
-                    name.Append(m_KeyData.FirstName);
+                    name.Append(_keyData.FirstName);
                 }
 
-                if (String.IsNullOrEmpty(m_KeyData.MiddleName) == false)
-                {
-                    if (name.Length != 0)
-                    {
-                        name.Append(" ");
-                    }
-
-                    name.Append(m_KeyData.MiddleName);
-                }
-
-                if (String.IsNullOrEmpty(m_KeyData.LastName) == false)
+                if (string.IsNullOrEmpty(_keyData.MiddleName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append(m_KeyData.LastName);
+                    name.Append(_keyData.MiddleName);
                 }
 
-                if (m_KeyData.BirthYear != 0)
+                if (string.IsNullOrEmpty(_keyData.LastName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("(" + m_KeyData.BirthYear + ")");
+                    name.Append(_keyData.LastName);
                 }
 
-                return (name.ToString());
+                if (_keyData.BirthYear != 0)
+                {
+                    if (name.Length != 0)
+                    {
+                        name.Append(" ");
+                    }
+
+                    name.Append("(" + _keyData.BirthYear + ")");
+                }
+
+                return name.ToString();
             }
         }
 
-        public String FormattedNameWithMarkers
+        public string FormattedNameWithMarkers
         {
             get
             {
-                StringBuilder name = new StringBuilder();
+                var name = new StringBuilder();
 
-                if (String.IsNullOrEmpty(m_KeyData.FirstName) == false)
+                if (string.IsNullOrEmpty(_keyData.FirstName) == false)
                 {
-                    name.Append("<" + m_KeyData.FirstName + ">");
+                    name.Append("<" + _keyData.FirstName + ">");
                 }
 
-                if (String.IsNullOrEmpty(m_KeyData.MiddleName) == false)
-                {
-                    if (name.Length != 0)
-                    {
-                        name.Append(" ");
-                    }
-
-                    name.Append("{" + m_KeyData.MiddleName + "}");
-                }
-
-                if (String.IsNullOrEmpty(m_KeyData.LastName) == false)
+                if (string.IsNullOrEmpty(_keyData.MiddleName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("[" + m_KeyData.LastName + "]");
+                    name.Append("{" + _keyData.MiddleName + "}");
                 }
 
-                if (m_KeyData.BirthYear != 0)
+                if (string.IsNullOrEmpty(_keyData.LastName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("(" + m_KeyData.BirthYear + ")");
+                    name.Append("[" + _keyData.LastName + "]");
                 }
 
-                return (name.ToString());
+                if (_keyData.BirthYear != 0)
+                {
+                    if (name.Length != 0)
+                    {
+                        name.Append(" ");
+                    }
+
+                    name.Append("(" + _keyData.BirthYear + ")");
+                }
+
+                return name.ToString();
             }
         }
 
@@ -177,40 +160,43 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 
         public PersonKey(IPerson person)
         {
-            m_KeyData = new Person(person);
-            m_HashCode = m_KeyData.LastName.GetHashCode() / 4
-                + m_KeyData.FirstName.GetHashCode() / 4
-                + m_KeyData.MiddleName.GetHashCode() / 4
-                + m_KeyData.BirthYear.GetHashCode() / 4;
+            _keyData = new Person(person);
+
+            _hashCode = GetHashCode(_keyData.LastName) ^ GetHashCode(_keyData.FirstName) ^ GetHashCode(_keyData.MiddleName) ^ _keyData.BirthYear.GetHashCode();
         }
 
         #endregion
 
         #region Methods
 
-        public override Int32 GetHashCode()
-            => (m_HashCode);
+        public override int GetHashCode() => _hashCode;
 
-        public override Boolean Equals(Object obj)
+        public override bool Equals(object obj)
         {
-            PersonKey other = obj as PersonKey;
-
-            if (other == null)
+            if (!(obj is PersonKey other))
             {
-                return (false);
+                return false;
             }
             else
             {
-                return ((m_KeyData.LastName == other.m_KeyData.LastName)
-                    && (m_KeyData.FirstName == other.m_KeyData.FirstName)
-                    && (m_KeyData.MiddleName == other.m_KeyData.MiddleName)
-                    && (m_KeyData.BirthYear == other.m_KeyData.BirthYear));
+                var result = string.Equals(_keyData.LastName, other._keyData.LastName, StringComparison.InvariantCultureIgnoreCase)
+                    && string.Equals(_keyData.MiddleName, other._keyData.MiddleName, StringComparison.InvariantCultureIgnoreCase)
+                    && string.Equals(_keyData.FirstName, other._keyData.FirstName, StringComparison.InvariantCultureIgnoreCase)
+                    && _keyData.BirthYear == other._keyData.BirthYear;
+
+                return result;
             }
         }
 
-        public override String ToString()
-            => (FormattedNameWithMarkers);
+        public override string ToString() => FormattedNameWithMarkers;
 
         #endregion
+
+        private static int GetHashCode(string namePart)
+        {
+            var result = (namePart ?? string.Empty).ToLowerInvariant().GetHashCode();
+
+            return result;
+        }
     }
 }
