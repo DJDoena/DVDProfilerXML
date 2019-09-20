@@ -8,53 +8,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
     /// This object can be used as key in hashtables and dictionaries.
     /// </summary>
     [ImmutableObject(true)]
-    public sealed class PersonKey
+    public sealed class PersonKey : IEquatable<PersonKey>
     {
-        #region Private Class
-
-        private sealed class Person : IPerson
-        {
-            #region IPerson 
-
-            public string LastName { get; set; }
-
-            public string MiddleName { get; set; }
-
-            public string FirstName { get; set; }
-
-            public int BirthYear { get; set; }
-
-            public string CreditedAs { get; set; }
-
-            #endregion
-
-            internal Person(IPerson person)
-            {
-                LastName = string.IsNullOrEmpty(person.LastName) == false
-                    ? person.LastName
-                    : string.Empty;
-
-                MiddleName = string.IsNullOrEmpty(person.MiddleName) == false
-                    ? person.MiddleName
-                    : string.Empty;
-
-                FirstName = string.IsNullOrEmpty(person.FirstName) == false
-                    ? person.FirstName
-                    : string.Empty;
-
-                BirthYear = person.BirthYear;
-
-                CreditedAs = string.IsNullOrEmpty(person.CreditedAs) == false
-                    ? person.CreditedAs
-                    : string.Empty;
-            }
-        }
-
-        #endregion
-
         #region Fields
-
-        private readonly Person _keyData;
 
         private readonly int _hashCode;
 
@@ -62,7 +18,13 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 
         #region Properties
 
-        public IPerson KeyData => new Person(_keyData);
+        public string LastName { get; }
+
+        public string MiddleName { get; }
+
+        public string FirstName { get; }
+
+        public int BirthYear { get; }
 
         public string FormattedName
         {
@@ -70,39 +32,39 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
             {
                 var name = new StringBuilder();
 
-                if (string.IsNullOrEmpty(_keyData.FirstName) == false)
+                if (string.IsNullOrEmpty(FirstName) == false)
                 {
-                    name.Append(_keyData.FirstName);
+                    name.Append(FirstName);
                 }
 
-                if (string.IsNullOrEmpty(_keyData.MiddleName) == false)
+                if (string.IsNullOrEmpty(MiddleName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append(_keyData.MiddleName);
+                    name.Append(MiddleName);
                 }
 
-                if (string.IsNullOrEmpty(_keyData.LastName) == false)
+                if (string.IsNullOrEmpty(LastName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append(_keyData.LastName);
+                    name.Append(LastName);
                 }
 
-                if (_keyData.BirthYear != 0)
+                if (BirthYear != 0)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("(" + _keyData.BirthYear + ")");
+                    name.Append("(" + BirthYear + ")");
                 }
 
                 return name.ToString();
@@ -115,39 +77,39 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
             {
                 var name = new StringBuilder();
 
-                if (string.IsNullOrEmpty(_keyData.FirstName) == false)
+                if (string.IsNullOrEmpty(FirstName) == false)
                 {
-                    name.Append("<" + _keyData.FirstName + ">");
+                    name.Append("<" + FirstName + ">");
                 }
 
-                if (string.IsNullOrEmpty(_keyData.MiddleName) == false)
+                if (string.IsNullOrEmpty(MiddleName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("{" + _keyData.MiddleName + "}");
+                    name.Append("{" + MiddleName + "}");
                 }
 
-                if (string.IsNullOrEmpty(_keyData.LastName) == false)
+                if (string.IsNullOrEmpty(LastName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("[" + _keyData.LastName + "]");
+                    name.Append("[" + LastName + "]");
                 }
 
-                if (_keyData.BirthYear != 0)
+                if (BirthYear != 0)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("(" + _keyData.BirthYear + ")");
+                    name.Append("(" + BirthYear + ")");
                 }
 
                 return name.ToString();
@@ -160,9 +122,15 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 
         public PersonKey(IPerson person)
         {
-            _keyData = new Person(person);
+            LastName = person.LastName ?? string.Empty;
+            MiddleName = person.MiddleName ?? string.Empty;
+            FirstName = person.FirstName ?? string.Empty;
+            BirthYear = person.BirthYear;
 
-            _hashCode = GetHashCode(_keyData.LastName) ^ GetHashCode(_keyData.FirstName) ^ GetHashCode(_keyData.MiddleName) ^ _keyData.BirthYear.GetHashCode();
+            _hashCode = LastName.ToLowerInvariant().GetHashCode()
+                ^ FirstName.ToLowerInvariant().GetHashCode()
+                ^ MiddleName.ToLowerInvariant().GetHashCode()
+                ^ BirthYear.GetHashCode();
         }
 
         #endregion
@@ -171,32 +139,25 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 
         public override int GetHashCode() => _hashCode;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object obj) => Equals(obj as PersonKey);
+
+        public bool Equals(PersonKey other)
         {
-            if (!(obj is PersonKey other))
+            if (other == null)
             {
                 return false;
             }
-            else
-            {
-                var result = string.Equals(_keyData.LastName, other._keyData.LastName, StringComparison.InvariantCultureIgnoreCase)
-                    && string.Equals(_keyData.MiddleName, other._keyData.MiddleName, StringComparison.InvariantCultureIgnoreCase)
-                    && string.Equals(_keyData.FirstName, other._keyData.FirstName, StringComparison.InvariantCultureIgnoreCase)
-                    && _keyData.BirthYear == other._keyData.BirthYear;
 
-                return result;
-            }
+            var equals = string.Equals(LastName, other.LastName, StringComparison.InvariantCultureIgnoreCase)
+                 && string.Equals(MiddleName, other.MiddleName, StringComparison.InvariantCultureIgnoreCase)
+                 && string.Equals(FirstName, other.FirstName, StringComparison.InvariantCultureIgnoreCase)
+                 && BirthYear == other.BirthYear;
+
+            return equals;
         }
 
         public override string ToString() => FormattedNameWithMarkers;
 
         #endregion
-
-        private static int GetHashCode(string namePart)
-        {
-            var result = (namePart ?? string.Empty).ToLowerInvariant().GetHashCode();
-
-            return result;
-        }
     }
 }
