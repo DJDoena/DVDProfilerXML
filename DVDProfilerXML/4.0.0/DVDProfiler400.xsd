@@ -98,7 +98,7 @@
             <xs:enumeration value="UPCEAN"/>
             <xs:enumeration value="ManualID"/>
             <xs:enumeration value="DiscID"/>
-	    <xs:enumeration value="PluginSpecificID"/>
+            <xs:enumeration value="PluginSpecificID"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -379,18 +379,12 @@
       <xs:element name="Tag" type="Tag" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="BasicUser">
+  <xs:complexType name="User">
     <xs:attribute name="FirstName" type="xs:string" use="required"/>
     <xs:attribute name="LastName" type="xs:string" use="required"/>
+    <xs:attribute name="EmailAddress" type="xs:string" use="required"/>
+    <xs:attribute name="PhoneNumber" type="xs:string" use="required"/>
     <xs:anyAttribute/>
-  </xs:complexType>
-  <xs:complexType name="User">
-    <xs:complexContent>
-      <xs:restriction base="BasicUser">
-        <xs:attribute name="EmailAddress" type="xs:string" use="required"/>
-        <xs:attribute name="PhoneNumber" type="xs:string" use="required"/>
-      </xs:restriction>
-    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="Price">
     <xs:simpleContent>

@@ -214,29 +214,30 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         public XmlNode[] OpenElements;
     }
 
-    public partial class CollectionType
+    public partial class CollectionType : IEquatable<CollectionType>
     {
         public CollectionType()
         {
-            Value = String.Empty;
+            Value = string.Empty;
         }
 
-        public override String ToString()
-            => (Value + "(Owned: " + IsPartOfOwnedCollection.ToString() + ")");
+        public override string ToString() => Value + "(Owned: " + IsPartOfOwnedCollection.ToString() + ")";
 
-        public override Int32 GetHashCode()
-            => (Value.GetHashCode());
+        public override int GetHashCode() => Value.GetHashCode();
 
-        public override Boolean Equals(Object obj)
+        public override bool Equals(object obj) => Equals(obj as CollectionType);
+
+        public bool Equals(CollectionType other)
         {
-            CollectionType other = obj as CollectionType;
-
             if (other == null)
             {
-                return (false);
+                return false;
             }
 
-            return ((Value == other.Value) && (IsPartOfOwnedCollection == other.IsPartOfOwnedCollection));
+            var equals = Value == other.Value
+                && IsPartOfOwnedCollection == other.IsPartOfOwnedCollection;
+
+            return equals;
         }
 
         [XmlAnyAttribute]
@@ -301,55 +302,26 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         public XmlNode[] OpenElements;
     }
 
-    public partial class BasicUser
+    public partial class User
     {
-        public BasicUser()
+        public User()
         {
-            FirstName = String.Empty;
-            LastName = String.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            EmailAddress = string.Empty;
+            PhoneNumber = string.Empty;
         }
 
-        public override String ToString()
+        public User(User user)
         {
-            StringBuilder name = new StringBuilder();
-
-            if (String.IsNullOrEmpty(FirstName) == false)
-            {
-                name.Append(FirstName);
-            }
-
-            if (String.IsNullOrEmpty(LastName) == false)
-            {
-                if (name.Length != 0)
-                {
-                    name.Append(" ");
-                }
-
-                name.Append(LastName);
-            }
-
-            return (name.ToString());
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            EmailAddress = user.EmailAddress;
+            PhoneNumber = user.PhoneNumber;
         }
 
         [XmlAnyAttribute]
         public XmlNode[] OpenAttributes;
-    }
-
-    public partial class User : BasicUser
-    {
-        public User()
-        {
-            EmailAddress = String.Empty;
-            PhoneNumber = String.Empty;
-        }
-
-        public User(BasicUser user)
-        {
-            FirstName = user.FirstName;
-            LastName = user.LastName;
-            EmailAddress = String.Empty;
-            PhoneNumber = String.Empty;
-        }
     }
 
     public partial class BoxSet

@@ -10,13 +10,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
     [ImmutableObject(true)]
     public sealed class PersonKey : IEquatable<PersonKey>
     {
-        #region Fields
-
         private readonly int _hashCode;
-
-        #endregion
-
-        #region Properties
 
         public string LastName { get; }
 
@@ -116,10 +110,6 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
             }
         }
 
-        #endregion
-
-        #region Constructor
-
         public PersonKey(IPerson person)
         {
             LastName = person.LastName ?? string.Empty;
@@ -132,10 +122,6 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
                 ^ MiddleName.ToLowerInvariant().GetHashCode()
                 ^ BirthYear.GetHashCode();
         }
-
-        #endregion
-
-        #region Methods
 
         public override int GetHashCode() => _hashCode;
 
@@ -157,7 +143,5 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
         }
 
         public override string ToString() => FormattedNameWithMarkers;
-
-        #endregion
     }
 }
