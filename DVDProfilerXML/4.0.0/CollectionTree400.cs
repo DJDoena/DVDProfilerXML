@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
@@ -8,9 +7,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public List<DVDNode> DVDList;
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append("Count: ");
 
@@ -23,7 +22,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append("none");
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
     }
 
@@ -33,7 +32,6 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         public List<DVDNode> ChildrenList;
 
-        public override String ToString()
-            => ((DVD != null) ? DVD.ToString() : base.ToString());
+        public override string ToString() => (DVD != null) ? DVD.ToString() : base.ToString();
     }
 }

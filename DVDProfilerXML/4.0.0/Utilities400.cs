@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DoenaSoft.DVDProfiler.DVDProfilerHelper;
@@ -15,7 +14,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if (collection.DVDList?.Length > 0)
             {
-                List<DVD> list = new List<DVD>(collection.DVDList);
+                var list = new List<DVD>(collection.DVDList);
 
                 list.Sort(CompareId);
 
@@ -27,7 +26,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if (collection.DVDList?.Length > 0)
             {
-                List<DVD> list = new List<DVD>(collection.DVDList);
+                var list = new List<DVD>(collection.DVDList);
 
                 list.Sort(CompareSortTitleAscending);
 
@@ -39,7 +38,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if (collection.DVDList?.Length > 0)
             {
-                List<DVD> list = new List<DVD>(collection.DVDList);
+                var list = new List<DVD>(collection.DVDList);
 
                 list.Sort(CompareSortTitleDescending);
 
@@ -51,7 +50,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if (collection.DVDList?.Length > 0)
             {
-                List<DVD> list = new List<DVD>(collection.DVDList);
+                var list = new List<DVD>(collection.DVDList);
 
                 list.Sort(ComparePurchaseDateAscending);
 
@@ -63,7 +62,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if (collection.DVDList?.Length > 0)
             {
-                List<DVD> list = new List<DVD>(collection.DVDList);
+                var list = new List<DVD>(collection.DVDList);
 
                 list.Sort(ComparePurchaseDateDescending);
 
@@ -75,7 +74,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if (collection.DVDList?.Length > 0)
             {
-                List<DVD> list = new List<DVD>(collection.DVDList);
+                var list = new List<DVD>(collection.DVDList);
 
                 list.Sort(CompareCollectionNumberAscending);
 
@@ -87,60 +86,61 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if (collection.DVDList?.Length > 0)
             {
-                List<DVD> list = new List<DVD>(collection.DVDList);
+                var list = new List<DVD>(collection.DVDList);
 
                 list.Sort(CompareCollectionNumberDescending);
 
                 collection.DVDList = list.ToArray();
             }
         }
+
         #endregion
 
         #region Clipboard
 
-        public static Boolean TryGetCastInformationFromClipboard(out CastInformation castInformation)
+        public static bool TryGetCastInformationFromClipboard(out CastInformation castInformation)
         {
             try
             {
-                String xml = Clipboard.GetText();
+                var xml = Clipboard.GetText();
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
                 castInformation = DVDProfilerSerializer<CastInformation>.FromString(xml, CastInformation.DefaultEncoding);
 
-                return (true);
+                return true;
             }
             catch
             {
                 castInformation = null;
 
-                return (false);
+                return false;
             }
         }
 
-        public static Boolean TryGetCrewInformationFromClipboard(out CrewInformation crewInformation)
+        public static bool TryGetCrewInformationFromClipboard(out CrewInformation crewInformation)
         {
             try
             {
-                String xml = Clipboard.GetText();
+                var xml = Clipboard.GetText();
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
                 crewInformation = DVDProfilerSerializer<CrewInformation>.FromString(xml, CrewInformation.DefaultEncoding);
 
-                return (true);
+                return true;
             }
             catch
             {
                 crewInformation = null;
-                return (false);
+
+                return false;
             }
         }
 
-        public static String CopyCastInformationToClipboard(CastInformation castInformation
-            , Boolean silent = false)
+        public static string CopyCastInformationToClipboard(CastInformation castInformation, bool silent = false)
         {
-            String xml = DVDProfilerSerializer<CastInformation>.ToString(castInformation, CastInformation.DefaultEncoding);
+            var xml = DVDProfilerSerializer<CastInformation>.ToString(castInformation, CastInformation.DefaultEncoding);
 
             if (silent == false)
             {
@@ -155,12 +155,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             return (xml);
         }
 
-        public static String CopyCrewInformationToClipboard(CrewInformation crewInformation
-            , Boolean silent = false)
+        public static string CopyCrewInformationToClipboard(CrewInformation crewInformation, bool silent = false)
         {
             crewInformation = CrewSorter.GetSortedCrew(crewInformation);
 
-            String xml = DVDProfilerSerializer<CrewInformation>.ToString(crewInformation, CrewInformation.DefaultEncoding);
+            var xml = DVDProfilerSerializer<CrewInformation>.ToString(crewInformation, CrewInformation.DefaultEncoding);
 
             if (silent == false)
             {
@@ -172,7 +171,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 { }
             }
 
-            return (xml);
+            return xml;
         }
 
         #endregion
@@ -181,22 +180,22 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         public static CollectionTree GetCollectionTree(Collection collection)
         {
-            List<DVDNode> list = new List<DVDNode>();
+            var list = new List<DVDNode>();
 
             if (collection.DVDList?.Length > 0)
             {
-                Dictionary<String, DVD> dict = new Dictionary<String, DVD>(collection.DVDList.Length);
+                var dict = new Dictionary<string, DVD>(collection.DVDList.Length);
 
-                foreach (DVD dvd in collection.DVDList)
+                foreach (var dvd in collection.DVDList)
                 {
                     dict.Add(dvd.ID, dvd);
                 }
 
-                foreach (DVD dvd in collection.DVDList)
+                foreach (var dvd in collection.DVDList)
                 {
                     if (dict.ContainsKey(dvd.ID))
                     {
-                        if ((dvd.BoxSet == null) || (String.IsNullOrEmpty(dvd.BoxSet.Parent)))
+                        if ((dvd.BoxSet == null) || (string.IsNullOrEmpty(dvd.BoxSet.Parent)))
                         {
                             //Node has no parent
                             AddDVDNode(dict, list, dvd);
@@ -210,26 +209,26 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 }
             }
 
-            CollectionTree tree = new CollectionTree();
-
-            tree.DVDList = list;
+            var tree = new CollectionTree()
+            {
+                DVDList = list,
+            };
 
             return (tree);
         }
 
-        private static void AddDVDNode(Dictionary<String, DVD> dict
-            , List<DVDNode> parentList
-            , DVD dvd)
+        private static void AddDVDNode(Dictionary<string, DVD> dict, List<DVDNode> parentList, DVD dvd)
         {
-            DVDNode node = new DVDNode();
-
-            node.DVD = dvd;
+            var node = new DVDNode()
+            {
+                DVD = dvd,
+            };
 
             if (dvd.BoxSet.ContentList != null)
             {
-                List<DVDNode> childList = new List<DVDNode>(dvd.BoxSet.ContentList.Length);
+                var childList = new List<DVDNode>(dvd.BoxSet.ContentList.Length);
 
-                foreach (String id in dvd.BoxSet.ContentList)
+                foreach (string id in dvd.BoxSet.ContentList)
                 {
                     if (dict.ContainsKey(id))
                     {
@@ -249,8 +248,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             dict.Remove(dvd.ID);
         }
 
-        public static void SortById(CollectionTree tree
-            , Boolean sortChildNodes)
+        public static void SortById(CollectionTree tree, bool sortChildNodes)
         {
             if (tree != null)
             {
@@ -258,8 +256,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             }
         }
 
-        public static void SortById(List<DVDNode> nodeList
-            , Boolean sortChildNodes)
+        public static void SortById(List<DVDNode> nodeList, bool sortChildNodes)
         {
             if (nodeList?.Count > 0)
             {
@@ -267,7 +264,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
                 if (sortChildNodes)
                 {
-                    foreach (DVDNode node in nodeList)
+                    foreach (var node in nodeList)
                     {
                         SortById(node.ChildrenList, sortChildNodes);
                     }
@@ -275,8 +272,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             }
         }
 
-        public static void SortByTitleAscending(CollectionTree tree
-            , Boolean sortChildNodes)
+        public static void SortByTitleAscending(CollectionTree tree, bool sortChildNodes)
         {
             if (tree != null)
             {
@@ -284,8 +280,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             }
         }
 
-        public static void SortByTitleAscending(List<DVDNode> nodeList
-            , Boolean sortChildNodes)
+        public static void SortByTitleAscending(List<DVDNode> nodeList, bool sortChildNodes)
         {
             if (nodeList?.Count > 0)
             {
@@ -293,7 +288,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
                 if (sortChildNodes)
                 {
-                    foreach (DVDNode node in nodeList)
+                    foreach (var node in nodeList)
                     {
                         SortByTitleAscending(node.ChildrenList, sortChildNodes);
                     }
@@ -301,8 +296,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             }
         }
 
-        public static void SortByTitleDescending(CollectionTree tree
-            , Boolean sortChildNodes)
+        public static void SortByTitleDescending(CollectionTree tree, bool sortChildNodes)
         {
             if (tree != null)
             {
@@ -310,8 +304,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             }
         }
 
-        public static void SortByTitleDescending(List<DVDNode> nodeList
-            , Boolean sortChildNodes)
+        public static void SortByTitleDescending(List<DVDNode> nodeList, bool sortChildNodes)
         {
             if (nodeList?.Count > 0)
             {
@@ -319,7 +312,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
                 if (sortChildNodes)
                 {
-                    foreach (DVDNode node in nodeList)
+                    foreach (var node in nodeList)
                     {
                         SortByTitleDescending(node.ChildrenList, sortChildNodes);
                     }
@@ -335,144 +328,128 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         #region Collection
 
-        private static Int32 CompareId(DVD left
-            , DVD right)
+        private static int CompareId(DVD left, DVD right)
         {
             if (left.ID == null)
             {
                 if (right.ID == null)
                 {
-                    return (0);
+                    return 0;
                 }
                 else
                 {
-                    return (-1);
+                    return -1;
                 }
             }
             else if (right.ID == null)
             {
-                return (1);
+                return 1;
             }
             else
             {
-                return (left.ID.CompareTo(right.ID));
+                return left.ID.CompareTo(right.ID);
             }
         }
 
-        private static Int32 CompareSortTitleAscending(DVD left
-            , DVD right)
-            => (CompareSortTitle(left, right));
+        private static int CompareSortTitleAscending(DVD left, DVD right) => CompareSortTitle(left, right);
 
-        private static Int32 CompareSortTitleDescending(DVD left
-            , DVD right)
-            => (CompareSortTitle(right, left));
+        private static int CompareSortTitleDescending(DVD left, DVD right) => CompareSortTitle(right, left);
 
-        internal static Int32 CompareSortTitle(DVD left
-            , DVD right)
+        internal static int CompareSortTitle(DVD left, DVD right)
         {
             if (left.SortTitle == null)
             {
                 if (right.SortTitle == null)
                 {
-                    return (0);
+                    return 0;
                 }
                 else
                 {
-                    return (-1);
+                    return -1;
                 }
             }
             else if (right.SortTitle == null)
             {
-                return (1);
+                return 1;
             }
             else
             {
-                Int32 compare = left.SortTitle.CompareTo(right.SortTitle);
+                var compare = left.SortTitle.CompareTo(right.SortTitle);
 
                 if (compare == 0)
                 {
                     compare = CompareId(left, right);
                 }
 
-                return (compare);
+                return compare;
             }
         }
 
-        private static Int32 CompareCollectionNumberAscending(DVD left
-            , DVD right)
-            => (CompareCollectionNumber(left, right));
+        private static int CompareCollectionNumberAscending(DVD left, DVD right) => CompareCollectionNumber(left, right);
 
-        private static Int32 CompareCollectionNumberDescending(DVD left
-            , DVD right)
-            => (CompareCollectionNumber(right, left));
+        private static int CompareCollectionNumberDescending(DVD left, DVD right) => CompareCollectionNumber(right, left);
 
-        private static Int32 CompareCollectionNumber(DVD left
-            , DVD right)
+        private static int CompareCollectionNumber(DVD left, DVD right)
         {
             if (left.CollectionNumber == null)
             {
                 if (right.CollectionNumber == null)
                 {
-                    return (CompareSortTitle(left, right));
+                    return CompareSortTitle(left, right);
                 }
                 else
                 {
-                    return (-1);
+                    return -1;
                 }
             }
             else if (right.CollectionNumber == null)
             {
-                return (1);
+                return 1;
             }
             else
             {
-                Int32 compare = left.CollectionNumber.CompareTo(right.CollectionNumber);
+                var compare = left.CollectionNumber.CompareTo(right.CollectionNumber);
 
                 if (compare == 0)
                 {
                     compare = CompareSortTitle(left, right);
                 }
 
-                return (compare);
+                return compare;
             }
         }
 
-        private static Int32 ComparePurchaseDateAscending(DVD left
-            , DVD right)
-            => (ComparePurchaseDate(left, right));
+        private static int ComparePurchaseDateAscending(DVD left, DVD right) => ComparePurchaseDate(left, right);
 
-        private static Int32 ComparePurchaseDateDescending(DVD left
-            , DVD right)
-            => (ComparePurchaseDate(right, left));
+        private static int ComparePurchaseDateDescending(DVD left, DVD right) => ComparePurchaseDate(right, left);
 
-        private static Int32 ComparePurchaseDate(DVD left
-            , DVD right)
+        private static int ComparePurchaseDate(DVD left, DVD right)
         {
             if ((left.PurchaseInfo == null) || (left.PurchaseInfo.DateSpecified == false))
             {
                 if ((right.PurchaseInfo == null) || (right.PurchaseInfo.DateSpecified == false))
                 {
-                    return (CompareSortTitle(left, right));
+                    return CompareSortTitle(left, right);
                 }
                 else
                 {
-                    return (-1);
+                    return -1;
                 }
             }
             else if ((right.PurchaseInfo == null) || (right.PurchaseInfo.DateSpecified == false))
             {
-                return (1);
+                return 1;
             }
             else
             {
-                Int32 compare = left.PurchaseInfo.Date.CompareTo(right.PurchaseInfo.Date);
+                var compare = left.PurchaseInfo.Date.CompareTo(right.PurchaseInfo.Date);
 
                 if (compare == 0)
                 {
                     compare = CompareSortTitle(left, right);
                 }
 
-                return (compare);
+                return compare;
             }
         }
 
@@ -480,58 +457,53 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         #region CollectionTree
 
-        private static Int32 CompareSortTitleAscending(DVDNode left
-            , DVDNode right)
-            => (CompareSortTitle(left, right));
+        private static int CompareSortTitleAscending(DVDNode left, DVDNode right) => CompareSortTitle(left, right);
 
-        private static Int32 CompareSortTitleDescending(DVDNode left
-            , DVDNode right)
-            => (CompareSortTitle(right, left));
+        private static int CompareSortTitleDescending(DVDNode left, DVDNode right) => CompareSortTitle(right, left);
 
-        private static Int32 CompareSortTitle(DVDNode left
-            , DVDNode right)
+        private static int CompareSortTitle(DVDNode left, DVDNode right)
         {
             if ((left.DVD == null) || (left.DVD.SortTitle == null))
             {
                 if ((right.DVD == null) || (right.DVD.SortTitle == null))
                 {
-                    return (0);
+                    return 0;
                 }
                 else
                 {
-                    return (-1);
+                    return -1;
                 }
             }
             else if ((right.DVD == null) || (right.DVD.SortTitle == null))
             {
-                return (1);
+                return 1;
             }
             else
             {
-                return (left.DVD.SortTitle.CompareTo(right.DVD.SortTitle));
+                return left.DVD.SortTitle.CompareTo(right.DVD.SortTitle);
             }
         }
 
-        private static Int32 CompareId(DVDNode left, DVDNode right)
+        private static int CompareId(DVDNode left, DVDNode right)
         {
             if ((left.DVD == null) || (left.DVD.ID == null))
             {
                 if ((right.DVD == null) || (right.DVD.ID == null))
                 {
-                    return (0);
+                    return 0;
                 }
                 else
                 {
-                    return (-1);
+                    return -1;
                 }
             }
             else if ((right.DVD == null) || (right.DVD.ID == null))
             {
-                return (1);
+                return 1;
             }
             else
             {
-                return (left.DVD.ID.CompareTo(right.DVD.ID));
+                return left.DVD.ID.CompareTo(right.DVD.ID);
             }
         }
 

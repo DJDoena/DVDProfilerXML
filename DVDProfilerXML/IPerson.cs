@@ -1,17 +1,15 @@
-using System;
-
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 {
     public interface IPerson
     {
-        String LastName { get; set; }
+        string LastName { get; set; }
 
-        String MiddleName { get; set; }
+        string MiddleName { get; set; }
 
-        String FirstName { get; set; }
+        string FirstName { get; set; }
 
-        Int32 BirthYear { get; set; }
+        int BirthYear { get; set; }
 
-        String CreditedAs { get; set; }
+        string CreditedAs { get; set; }
     }
 }

@@ -22,17 +22,16 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             DefaultEncoding = Encoding.GetEncoding(1252);
         }
 
-        public void Serialize(String fileName
-            , Encoding encoding = null)
+        public void Serialize(string fileName, Encoding encoding = null)
         {
             encoding = encoding ?? DefaultEncoding;
 
             DVDProfilerSerializer<Collection>.Serialize(fileName, this, encoding);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append("Count: ");
 
@@ -45,7 +44,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append("none");
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]
@@ -57,29 +56,29 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         public DVD()
         {
             ProfileTimestamp = DateTime.UtcNow;
-            ID = String.Empty;
+            ID = string.Empty;
             MediaTypes = new MediaTypes();
-            UPC = String.Empty;
-            CollectionNumber = String.Empty;
+            UPC = string.Empty;
+            CollectionNumber = string.Empty;
             CollectionType = new CollectionType();
-            Title = String.Empty;
-            Edition = String.Empty;
-            OriginalTitle = String.Empty;
-            CountryOfOrigin = String.Empty;
-            RatingSystem = String.Empty;
-            Rating = String.Empty;
-            CaseType = String.Empty;
-            GenreList = new String[0];
-            RegionList = new String[0];
+            Title = string.Empty;
+            Edition = string.Empty;
+            OriginalTitle = string.Empty;
+            CountryOfOrigin = string.Empty;
+            RatingSystem = string.Empty;
+            Rating = string.Empty;
+            CaseType = string.Empty;
+            GenreList = new string[0];
+            RegionList = new string[0];
             Format = new Format();
             Features = new Features();
-            StudioList = new String[0];
-            MediaCompanyList = new String[0];
+            StudioList = new string[0];
+            MediaCompanyList = new string[0];
             AudioList = new AudioTrack[0];
-            SubtitleList = new String[0];
+            SubtitleList = new string[0];
             SRP = new Price();
             DiscList = new Disc[0];
-            SortTitle = String.Empty;
+            SortTitle = string.Empty;
             PurchaseInfo = new PurchaseInfo();
             Review = new Review();
             MediaBanners = new MediaBanners();
@@ -91,38 +90,35 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         }
 
         [XmlIgnore]
-        public static Encoding DefaultEncoding
-            => (Collection.DefaultEncoding);
+        public static Encoding DefaultEncoding => Collection.DefaultEncoding;
 
         [XmlIgnore]
-        public String[] CountryOfOriginList
-            => (CountryOfOriginEnumerable.ToArray());
+        public string[] CountryOfOriginList => (CountryOfOriginEnumerable.ToArray());
 
-        private IEnumerable<String> CountryOfOriginEnumerable
+        private IEnumerable<string> CountryOfOriginEnumerable
         {
             get
             {
-                yield return (CountryOfOrigin);
-                yield return (CountryOfOrigin2);
-                yield return (CountryOfOrigin3);
+                yield return CountryOfOrigin;
+                yield return CountryOfOrigin2;
+                yield return CountryOfOrigin3;
             }
         }
 
-        public void Serialize(String fileName
-            , Encoding encoding = null)
+        public void Serialize(string fileName, Encoding encoding = null)
         {
             encoding = encoding ?? DefaultEncoding;
 
             DVDProfilerSerializer<DVD>.Serialize(fileName, this, encoding);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(Title);
 
-            if (String.IsNullOrEmpty(Edition) == false)
+            if (string.IsNullOrEmpty(Edition) == false)
             {
                 sb.Append(": ");
                 sb.Append(Edition);
@@ -139,38 +135,34 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
             sb.Append(")");
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
-        public override Boolean Equals(Object obj)
-            => Equals(obj as DVD);
+        public override bool Equals(object obj) => Equals(obj as DVD);
 
-        public override Int32 GetHashCode()
-            => (ID.GetHashCode());
+        public override int GetHashCode() => ID.GetHashCode();
 
         [XmlAnyElement]
         public XmlNode[] OpenElements;
 
         #region IComparable<DVD>
 
-        public Int32 CompareTo(DVD other)
-            => ((other == null) ? 1 : Utilities.CompareSortTitle(this, other));
+        public int CompareTo(DVD other) => ((other == null) ? 1 : Utilities.CompareSortTitle(this, other));
 
         #endregion
 
         #region IEquatable<DVD>
 
-        public Boolean Equals(DVD other)
-            => ((other != null) ? (ID == other.ID) : false);
+        public bool Equals(DVD other) => (other != null) ? (ID == other.ID) : false;
 
         #endregion
     }
 
     public partial class MediaTypes
     {
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             if (DVD)
             {
@@ -197,7 +189,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append("HD-DVD");
             }
 
-            if (String.IsNullOrEmpty(CustomMediaType) == false)
+            if (string.IsNullOrEmpty(CustomMediaType) == false)
             {
                 if (sb.Length > 0)
                 {
@@ -207,7 +199,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append(CustomMediaType);
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]
@@ -254,12 +246,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public Tag()
         {
-            Name = String.Empty;
-            FullName = String.Empty;
+            Name = string.Empty;
+            FullName = string.Empty;
         }
 
-        public override String ToString()
-            => (FullName);
+        public override string ToString() => FullName;
 
         [XmlAnyAttribute]
         public XmlNode[] OpenAttributes;
@@ -267,11 +258,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
     public partial class LoanInfo
     {
-        public override String ToString()
+        public override string ToString()
         {
             if (Loaned)
             {
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
 
                 if (DueSpecified)
                 {
@@ -290,11 +281,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                     sb.Append(User.ToString());
                 }
 
-                return (sb.ToString());
+                return sb.ToString();
             }
             else
             {
-                return ("not loaned");
+                return "not loaned";
             }
         }
 
@@ -328,8 +319,8 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public BoxSet()
         {
-            Parent = String.Empty;
-            ContentList = new String[0];
+            Parent = string.Empty;
+            ContentList = new string[0];
         }
 
         [XmlAnyElement]
@@ -345,9 +336,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             User = new User();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(Type);
             sb.Append(" at ");
@@ -359,7 +350,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append(User.ToString());
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]
@@ -368,9 +359,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
     public partial class Exclusions
     {
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             if (DPOPrivate)
             {
@@ -427,7 +418,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append("Movie Pick");
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]
@@ -442,15 +433,15 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             Back = MediaBannersRestriction.Automatic;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(Front);
             sb.Append(" / ");
             sb.Append(Back);
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyAttribute]
@@ -459,9 +450,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
     public partial class Review
     {
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append("Film: ");
             sb.Append(Film);
@@ -472,7 +463,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             sb.Append(" / Extras: ");
             sb.Append(Extras);
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyAttribute]
@@ -484,16 +475,16 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         public PurchaseInfo()
         {
             Price = new Price();
-            Place = String.Empty;
-            Type = String.Empty;
-            Website = String.Empty;
+            Place = string.Empty;
+            Type = string.Empty;
+            Website = string.Empty;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             if (Price != null)
             {
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
 
                 sb.Append(Price);
 
@@ -503,10 +494,10 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                     sb.Append(Date.ToShortDateString());
                 }
 
-                return (sb.ToString());
+                return sb.ToString();
             }
 
-            return (base.ToString());
+            return base.ToString();
         }
 
         [XmlAnyElement]
@@ -517,13 +508,12 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public Price()
         {
-            DenominationType = String.Empty;
-            DenominationDesc = String.Empty;
-            FormattedValue = String.Empty;
+            DenominationType = string.Empty;
+            DenominationDesc = string.Empty;
+            FormattedValue = string.Empty;
         }
 
-        public override String ToString()
-            => (FormattedValue);
+        public override string ToString() => FormattedValue;
 
         [XmlAnyAttribute]
         public XmlNode[] OpenAttributes;
@@ -533,29 +523,29 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public Disc()
         {
-            DescriptionSideA = String.Empty;
-            DescriptionSideB = String.Empty;
-            DiscIDSideA = String.Empty;
-            DiscIDSideB = String.Empty;
-            LabelSideA = String.Empty;
-            LabelSideB = String.Empty;
-            Location = String.Empty;
-            Slot = String.Empty;
+            DescriptionSideA = string.Empty;
+            DescriptionSideB = string.Empty;
+            DiscIDSideA = string.Empty;
+            DiscIDSideB = string.Empty;
+            LabelSideA = string.Empty;
+            LabelSideB = string.Empty;
+            Location = string.Empty;
+            Slot = string.Empty;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(DescriptionSideA);
 
-            if (String.IsNullOrEmpty(DescriptionSideB) == false)
+            if (string.IsNullOrEmpty(DescriptionSideB) == false)
             {
                 sb.Append(" / ");
                 sb.Append(DescriptionSideB);
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]
@@ -566,25 +556,25 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public CrewMember()
         {
-            FirstName = String.Empty;
-            MiddleName = String.Empty;
-            LastName = String.Empty;
-            CreditType = String.Empty;
-            CreditSubtype = String.Empty;
-            CustomRole = String.Empty;
-            CreditedAs = String.Empty;
+            FirstName = string.Empty;
+            MiddleName = string.Empty;
+            LastName = string.Empty;
+            CreditType = string.Empty;
+            CreditSubtype = string.Empty;
+            CustomRole = string.Empty;
+            CreditedAs = string.Empty;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
-            if (String.IsNullOrEmpty(FirstName) == false)
+            if (string.IsNullOrEmpty(FirstName) == false)
             {
                 sb.Append(FirstName);
             }
 
-            if (String.IsNullOrEmpty(MiddleName) == false)
+            if (string.IsNullOrEmpty(MiddleName) == false)
             {
                 if (sb.Length != 0)
                 {
@@ -594,7 +584,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append(MiddleName);
             }
 
-            if (String.IsNullOrEmpty(LastName) == false)
+            if (string.IsNullOrEmpty(LastName) == false)
             {
                 if (sb.Length != 0)
                 {
@@ -619,21 +609,21 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             sb.Append(" / ");
             sb.Append(CreditSubtype);
 
-            if (String.IsNullOrEmpty(CustomRole) == false)
+            if (string.IsNullOrEmpty(CustomRole) == false)
             {
                 sb.Append(" (");
                 sb.Append(CustomRole);
                 sb.Append(")");
             }
 
-            if (String.IsNullOrEmpty(CreditedAs) == false)
+            if (string.IsNullOrEmpty(CreditedAs) == false)
             {
                 sb.Append(" (as ");
                 sb.Append(CreditedAs);
                 sb.Append(")");
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyAttribute]
@@ -644,23 +634,23 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public CastMember()
         {
-            FirstName = String.Empty;
-            MiddleName = String.Empty;
-            LastName = String.Empty;
-            Role = String.Empty;
-            CreditedAs = String.Empty;
+            FirstName = string.Empty;
+            MiddleName = string.Empty;
+            LastName = string.Empty;
+            Role = string.Empty;
+            CreditedAs = string.Empty;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
-            if (String.IsNullOrEmpty(FirstName) == false)
+            if (string.IsNullOrEmpty(FirstName) == false)
             {
                 sb.Append(FirstName);
             }
 
-            if (String.IsNullOrEmpty(MiddleName) == false)
+            if (string.IsNullOrEmpty(MiddleName) == false)
             {
                 if (sb.Length != 0)
                 {
@@ -670,7 +660,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append(MiddleName);
             }
 
-            if (String.IsNullOrEmpty(LastName) == false)
+            if (string.IsNullOrEmpty(LastName) == false)
             {
                 if (sb.Length != 0)
                 {
@@ -703,14 +693,14 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append(" (uncredited)");
             }
 
-            if (String.IsNullOrEmpty(CreditedAs) == false)
+            if (string.IsNullOrEmpty(CreditedAs) == false)
             {
                 sb.Append(" (as ");
                 sb.Append(CreditedAs);
                 sb.Append(")");
             }
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyAttribute]
@@ -721,20 +711,20 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public Divider()
         {
-            Caption = String.Empty;
+            Caption = string.Empty;
             Type = DividerType.Episode;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(Caption);
             sb.Append(" (");
             sb.Append(Type);
             sb.Append(")");
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyAttribute]
@@ -745,12 +735,12 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public CrewDivider()
         {
-            CreditType = String.Empty;
+            CreditType = string.Empty;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(Caption);
             sb.Append(" (");
@@ -764,25 +754,24 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
             sb.Append(")");
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
-        public Boolean ShouldSerializeCreditType()
-            => (Type != DividerType.Episode);
+        public bool ShouldSerializeCreditType() => Type != DividerType.Episode;
     }
 
     public partial class AudioTrack
     {
         public AudioTrack()
         {
-            Content = String.Empty;
-            Format = String.Empty;
-            Channels = String.Empty;
+            Content = string.Empty;
+            Format = string.Empty;
+            Channels = string.Empty;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(Content);
             sb.Append(" / ");
@@ -790,7 +779,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             sb.Append(" / ");
             sb.Append(Channels);
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]
@@ -801,7 +790,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public Features()
         {
-            OtherFeatures = String.Empty;
+            OtherFeatures = string.Empty;
         }
 
         [XmlAnyElement]
@@ -810,8 +799,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
     public partial class Dimensions
     {
-        public override String ToString()
-            => ($"2D: {Dim2D}, 3D Anaglyph: {Dim3DAnaglyph}, 3D Blu-ray: {Dim3DBluRay}");
+        public override string ToString() => $"2D: {Dim2D}, 3D Anaglyph: {Dim3DAnaglyph}, 3D Blu-ray: {Dim3DBluRay}";
 
         [XmlAnyElement]
         public XmlNode[] OpenElements;
@@ -821,20 +809,20 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public Format()
         {
-            AspectRatio = String.Empty;
+            AspectRatio = string.Empty;
             Color = new ColorFormat();
             Dimensions = new Dimensions();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(VideoStandard);
             sb.Append(" ");
             sb.Append(AspectRatio);
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]
@@ -843,8 +831,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
     public partial class ColorFormat
     {
-        public override String ToString()
-            => ($"Color: {Color}, B/W: {BlackAndWhite}, Colorized: {Colorized}, Mixed: {Mixed}");
+        public override string ToString() => $"Color: {Color}, B/W: {BlackAndWhite}, Colorized: {Colorized}, Mixed: {Mixed}";
 
         [XmlAnyElement]
         public XmlNode[] OpenElements;
@@ -862,11 +849,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         public CastInformation()
         {
-            Title = String.Empty;
-            CastList = new Object[0];
+            Title = string.Empty;
+            CastList = new object[0];
         }
 
-        public void Serialize(String fileName
+        public void Serialize(string fileName
             , Encoding encoding = null)
         {
             encoding = encoding ?? DefaultEncoding;
@@ -874,13 +861,13 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             DVDProfilerSerializer<CastInformation>.Serialize(fileName, this, encoding);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb;
+            var sb = new StringBuilder();
 
-            sb = new StringBuilder();
             sb.Append(Title);
             sb.Append("(Count: ");
+
             if (CastList != null)
             {
                 sb.Append(CastList.Length);
@@ -889,8 +876,10 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             {
                 sb.Append("none");
             }
+
             sb.Append(")");
-            return (sb.ToString());
+
+            return sb.ToString();
         }
 
         [XmlAnyElement()]
@@ -900,26 +889,24 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     public partial class CrewInformation
     {
         [XmlIgnore]
-        public static Encoding DefaultEncoding
-            => (CastInformation.DefaultEncoding);
+        public static Encoding DefaultEncoding => CastInformation.DefaultEncoding;
 
         public CrewInformation()
         {
-            Title = String.Empty;
-            CrewList = new Object[0];
+            Title = string.Empty;
+            CrewList = new object[0];
         }
 
-        public void Serialize(String fileName
-            , Encoding encoding = null)
+        public void Serialize(string fileName, Encoding encoding = null)
         {
             encoding = encoding ?? DefaultEncoding;
 
             DVDProfilerSerializer<CrewInformation>.Serialize(fileName, this, encoding);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(Title);
             sb.Append("(Count: ");
@@ -935,7 +922,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
             sb.Append(")");
 
-            return (sb.ToString());
+            return sb.ToString();
         }
 
         [XmlAnyElement]

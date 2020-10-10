@@ -8,79 +8,70 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         private class CrewComparer : IComparable<CrewComparer>
         {
-            private Int32 EpisodeId { get; set; }
+            private int EpisodeId { get; set; }
 
-            private Int32 OriginalOrderId { get; set; }
+            private int OriginalOrderId { get; set; }
 
             private CrewMember CrewMember { get; set; }
 
             private CrewDivider CrewDivider { get; set; }
 
-            internal Object CrewEntry
-                => ((CrewMember != null) ? (Object)CrewMember : CrewDivider);
+            internal object CrewEntry => (CrewMember != null) ? (object)CrewMember : CrewDivider;
 
-            private CrewComparer(Int32 episodeId
-                , Int32 originalOrderId)
+            private CrewComparer(int episodeId, int originalOrderId)
             {
                 EpisodeId = episodeId;
                 OriginalOrderId = originalOrderId;
             }
 
-            internal CrewComparer(Int32 episodeId
-                , Int32 originalOrderId
-                , CrewMember crewMember)
-                : this(episodeId, originalOrderId)
+            internal CrewComparer(int episodeId, int originalOrderId, CrewMember crewMember) : this(episodeId, originalOrderId)
             {
                 CrewMember = crewMember;
             }
 
-            internal CrewComparer(Int32 episodeId
-                , Int32 originalOrderId
-                , CrewDivider crewDivider)
-                : this(episodeId, originalOrderId)
+            internal CrewComparer(int episodeId, int originalOrderId, CrewDivider crewDivider) : this(episodeId, originalOrderId)
             {
                 CrewDivider = crewDivider;
             }
 
-            public Int32 CompareTo(CrewComparer other)
+            public int CompareTo(CrewComparer other)
             {
                 if (other == null)
                 {
-                    return (1);
+                    return 1;
                 }
 
-                Int32 compare = EpisodeId.CompareTo(other.EpisodeId);
+                var compare = EpisodeId.CompareTo(other.EpisodeId);
 
                 if (compare != 0)
                 {
-                    return (compare);
+                    return compare;
                 }
 
                 compare = GetCompareValue(CrewEntry, other.CrewEntry);
 
                 if (compare != 0)
                 {
-                    return (compare);
+                    return compare;
                 }
 
-                return (OriginalOrderId.CompareTo(other.OriginalOrderId));
+                return OriginalOrderId.CompareTo(other.OriginalOrderId);
             }
 
-            private static Int32 GetCompareValue(Object left
-                , Object right)
+            private static int GetCompareValue(object left, object right)
             {
-                Int32 compareLeft = GetCompareValue(left);
+                var compareLeft = GetCompareValue(left);
 
-                Int32 compareRight = GetCompareValue(right);
+                var compareRight = GetCompareValue(right);
 
-                return (compareLeft.CompareTo(compareRight));
+                return compareLeft.CompareTo(compareRight);
             }
 
-            private static Int32 GetCompareValue(Object crewEntry)
+            private static int GetCompareValue(object crewEntry)
             {
-                CrewDivider crewDivider = crewEntry as CrewDivider;
+                var crewDivider = crewEntry as CrewDivider;
 
-                Int32 compare;
+                int compare;
                 if (crewDivider != null)
                 {
                     switch (crewDivider.Type)
@@ -101,7 +92,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 }
                 else
                 {
-                    CrewMember crewMember = crewEntry as CrewMember;
+                    var crewMember = crewEntry as CrewMember;
 
                     if (crewMember != null)
                     {
@@ -109,60 +100,60 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                     }
                     else
                     {
-                        Debug.Fail(String.Format("Unknown Object type {0}", crewEntry));
+                        Debug.Fail(string.Format("Unknown object type {0}", crewEntry));
 
                         compare = -2;
                     }
                 }
 
-                return (compare);
+                return compare;
             }
 
-            private static Int32 GetCompareValue(String creditType)
+            private static int GetCompareValue(string creditType)
             {
                 switch (creditType)
                 {
                     case ("Direction"):
                         {
-                            return (1);
+                            return 1;
                         }
                     case ("Writing"):
                         {
-                            return (2);
+                            return 2;
                         }
                     case ("Production"):
                         {
-                            return (3);
+                            return 3;
                         }
                     case ("Cinematography"):
                         {
-                            return (4);
+                            return 4;
                         }
                     case ("Film Editing"):
                         {
-                            return (5);
+                            return 5;
                         }
                     case ("Music"):
                         {
-                            return (6);
+                            return 6;
                         }
                     case ("Sound"):
                         {
-                            return (7);
+                            return 7;
                         }
                     case ("Art"):
                         {
-                            return (8);
+                            return 8;
                         }
                     case ("Other"):
                         {
-                            return (9);
+                            return 9;
                         }
                     default:
                         {
-                            Debug.Fail(String.Format("Unknown Credit Type '{0}'", creditType));
+                            Debug.Fail(string.Format("Unknown Credit Type '{0}'", creditType));
 
-                            return (0);
+                            return 0;
                         }
                 }
             }
@@ -172,24 +163,23 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             if ((unsortedCrew?.CrewList?.Length > 0) == false)
             {
-                return (unsortedCrew);
+                return unsortedCrew;
             }
 
-            CrewInformation sortedCrew = new CrewInformation();
-
-            sortedCrew.Title = unsortedCrew.Title;
-
-            List<CrewComparer> sortedList = new List<CrewComparer>(unsortedCrew.CrewList.Length);
-
-            Int32 currentEpisodeId = 0;
-
-            Int32 originalOrderId = 0;
-
-            foreach (Object crewEntry in unsortedCrew.CrewList)
+            var sortedCrew = new CrewInformation()
             {
-                CrewDivider divider = crewEntry as CrewDivider;
+                Title = unsortedCrew.Title,
+            };
 
-                if (divider != null)
+            var sortedList = new List<CrewComparer>(unsortedCrew.CrewList.Length);
+
+            var currentEpisodeId = 0;
+
+            var originalOrderId = 0;
+
+            foreach (var crewEntry in unsortedCrew.CrewList)
+            {
+                if (crewEntry is CrewDivider divider)
                 {
                     if (divider.Type == DividerType.Episode)
                     {
@@ -208,9 +198,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
             sortedList.Sort();
 
-            sortedCrew.CrewList = (sortedList.ConvertAll<Object>(sortedEntry => sortedEntry.CrewEntry)).ToArray();
+            sortedCrew.CrewList = sortedList.ConvertAll(sortedEntry => sortedEntry.CrewEntry).ToArray();
 
-            return (sortedCrew);
+            return sortedCrew;
         }
     }
 }
