@@ -3,10 +3,10 @@ using System.IO;
 using DoenaSoft.DVDProfiler.DVDProfilerHelper;
 
 // 
-// xsd.exe /c /l:cs /f /n:DoenaSoft.DVDProfiler.DVDProfilerXML.Version400 Localities400.xsd
+// xsd.exe /c /l:cs /f /n:DoenaSoft.DVDProfiler.DVDProfilerXML.Version400.Localities Localities400.xsd
 //
 
-namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
+namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400.Localities
 {
     partial class Localities
     {

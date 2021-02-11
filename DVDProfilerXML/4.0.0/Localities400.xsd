@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="Localities" type="LocalitiesType"/>
-  <xs:complexType name="LocalitiesType">
+  <xs:element name="Localities" type="Localities"/>
+  <xs:complexType name="Localities">
     <xs:sequence>
-      <xs:element name="Locality" type="LocalityType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Locality" type="Locality" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="LastUsedID" type="xs:int" use="required" />
   </xs:complexType>
-  <xs:complexType name="LocalityType">
+  <xs:complexType name="Locality">
     <xs:sequence>
-      <xs:element name="Ratings" type="RatingsType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Ratings" type="Ratings" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="Description" type="xs:string" use="required"/>
     <xs:attribute name="ID" type="xs:int" use="required"/>
     <xs:attribute name="DVDRegion" type="xs:string" use="required"/>
     <xs:attribute name="BDRegion" type="xs:string" use="required"/>
   </xs:complexType>
-  <xs:complexType name="RatingsType">
+  <xs:complexType name="Ratings">
     <xs:sequence>
-      <xs:element name="Rating" type="RatingType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Rating" type="Rating" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="Description" type="xs:string" use="required"/>
     <xs:attribute name="ID" type="xs:int" use="required"/>
   </xs:complexType>
-  <xs:complexType name="RatingType">
+  <xs:complexType name="Rating">
     <xs:attribute name="LegacyValue" type="xs:int" use="optional" />
     <xs:attribute name="Name" type="xs:string"  use="required"/>
     <xs:attribute name="Description" type="xs:string" use="required" />
