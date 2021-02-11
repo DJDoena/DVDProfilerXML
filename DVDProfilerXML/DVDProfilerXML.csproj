@@ -116,6 +116,12 @@
     <Compile Include="4.0.0\DVDProfiler400.NotGenerated.cs">
       <DependentUpon>DVDProfiler400.xsd</DependentUpon>
     </Compile>
+    <Compile Include="4.0.0\Localities400.cs">
+      <DependentUpon>Localities400.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="4.0.0\Localities400.NotGenerated.cs">
+      <DependentUpon>Localities400.xsd</DependentUpon>
+    </Compile>
     <Compile Include="4.0.0\Utilities400.cs" />
     <Compile Include="IPerson.cs" />
     <Compile Include="PersonKey.cs" />
@@ -181,6 +187,9 @@
   <ItemGroup>
     <None Include="3.9.0\DVDProfiler390.xsd" />
     <None Include="4.0.0\DVDProfiler400.xsd" />
+    <EmbeddedResource Include="4.0.0\Localities400.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="DJDSOFT.ICO">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
