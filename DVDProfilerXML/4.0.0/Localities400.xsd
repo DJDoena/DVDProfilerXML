@@ -13,7 +13,7 @@
     </xs:sequence>
     <xs:attribute name="Description" type="xs:string" use="required"/>
     <xs:attribute name="ID" type="xs:int" use="required"/>
-    <xs:attribute name="DVDRegion" type="xs:string" use="required"/>
+    <xs:attribute name="DVDRegion" type="xs:unsignedByte" use="required"/>
     <xs:attribute name="BDRegion" type="xs:string" use="required"/>
   </xs:complexType>
   <xs:complexType name="Ratings">

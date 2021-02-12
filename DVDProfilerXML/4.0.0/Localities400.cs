@@ -53,7 +53,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400.Localities {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string DVDRegion;
+        public byte DVDRegion;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
