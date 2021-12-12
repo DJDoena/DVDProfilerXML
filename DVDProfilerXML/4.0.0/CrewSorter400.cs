@@ -185,7 +185,7 @@
 
             var currentEpisodeId = 0;
 
-            var currentGrounpId = 0;
+            var currentGroupId = 0;
 
             var originalOrderId = 0;
 
@@ -199,14 +199,19 @@
                     }
                     else if (divider.Type == DividerType.Group)
                     {
-                        currentGrounpId++;
+                        currentGroupId++;
                     }
 
-                    sortedList.Add(new CrewComparer(currentEpisodeId, currentGrounpId, originalOrderId, divider));
+                    sortedList.Add(new CrewComparer(currentEpisodeId, currentGroupId, originalOrderId, divider));
+
+                    if (divider.Type == DividerType.EndDiv)
+                    {
+                        currentGroupId++;
+                    }
                 }
                 else
                 {
-                    sortedList.Add(new CrewComparer(currentEpisodeId, currentGrounpId, originalOrderId, crewEntry as CrewMember));
+                    sortedList.Add(new CrewComparer(currentEpisodeId, currentGroupId, originalOrderId, crewEntry as CrewMember));
                 }
 
                 originalOrderId++;
