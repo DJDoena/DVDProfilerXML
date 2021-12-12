@@ -25,7 +25,9 @@
             private CrewComparer(int episodeId, int groupId, int originalOrderId)
             {
                 this.EpisodeId = episodeId;
+
                 this.GroupId = groupId;
+
                 this.OriginalOrderId = originalOrderId;
             }
 
@@ -53,14 +55,14 @@
                     return compare;
                 }
 
-                compare = this.GroupId.CompareTo(other.GroupId);
+                compare = GetCompareValue(this.CrewEntry, other.CrewEntry);
 
                 if (compare != 0)
                 {
                     return compare;
                 }
 
-                compare = GetCompareValue(this.CrewEntry, other.CrewEntry);
+                compare = this.GroupId.CompareTo(other.GroupId);
 
                 if (compare != 0)
                 {
@@ -81,14 +83,12 @@
 
             private static int GetCompareValue(object crewEntry)
             {
-                var crewDivider = crewEntry as CrewDivider;
-
                 int compare;
-                if (crewDivider != null)
+                if (crewEntry is CrewDivider crewDivider)
                 {
                     switch (crewDivider.Type)
                     {
-                        case (DividerType.Episode):
+                        case DividerType.Episode:
                             {
                                 compare = -1;
 
@@ -104,9 +104,7 @@
                 }
                 else
                 {
-                    var crewMember = crewEntry as CrewMember;
-
-                    if (crewMember != null)
+                    if (crewEntry is CrewMember crewMember)
                     {
                         compare = GetCompareValue(crewMember.CreditType);
                     }
