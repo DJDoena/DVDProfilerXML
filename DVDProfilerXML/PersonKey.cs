@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.Text;
-
-namespace DoenaSoft.DVDProfiler.DVDProfilerXML
+﻿namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 {
+    using System;
+    using System.ComponentModel;
+    using System.Text;
+
     /// <summary>
     /// This object can be used as key in hashtables and dictionaries.
     /// </summary>
@@ -26,39 +26,39 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
             {
                 var name = new StringBuilder();
 
-                if (string.IsNullOrEmpty(FirstName) == false)
+                if (string.IsNullOrEmpty(this.FirstName) == false)
                 {
-                    name.Append(FirstName);
+                    name.Append(this.FirstName);
                 }
 
-                if (string.IsNullOrEmpty(MiddleName) == false)
+                if (string.IsNullOrEmpty(this.MiddleName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append(MiddleName);
+                    name.Append(this.MiddleName);
                 }
 
-                if (string.IsNullOrEmpty(LastName) == false)
+                if (string.IsNullOrEmpty(this.LastName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append(LastName);
+                    name.Append(this.LastName);
                 }
 
-                if (BirthYear != 0)
+                if (this.BirthYear != 0)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("(" + BirthYear + ")");
+                    name.Append("(" + this.BirthYear + ")");
                 }
 
                 return name.ToString();
@@ -71,39 +71,39 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
             {
                 var name = new StringBuilder();
 
-                if (string.IsNullOrEmpty(FirstName) == false)
+                if (string.IsNullOrEmpty(this.FirstName) == false)
                 {
-                    name.Append("<" + FirstName + ">");
+                    name.Append("<" + this.FirstName + ">");
                 }
 
-                if (string.IsNullOrEmpty(MiddleName) == false)
+                if (string.IsNullOrEmpty(this.MiddleName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("{" + MiddleName + "}");
+                    name.Append("{" + this.MiddleName + "}");
                 }
 
-                if (string.IsNullOrEmpty(LastName) == false)
+                if (string.IsNullOrEmpty(this.LastName) == false)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("[" + LastName + "]");
+                    name.Append("[" + this.LastName + "]");
                 }
 
-                if (BirthYear != 0)
+                if (this.BirthYear != 0)
                 {
                     if (name.Length != 0)
                     {
                         name.Append(" ");
                     }
 
-                    name.Append("(" + BirthYear + ")");
+                    name.Append("(" + this.BirthYear + ")");
                 }
 
                 return name.ToString();
@@ -112,20 +112,20 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
 
         public PersonKey(IPerson person)
         {
-            LastName = person.LastName ?? string.Empty;
-            MiddleName = person.MiddleName ?? string.Empty;
-            FirstName = person.FirstName ?? string.Empty;
-            BirthYear = person.BirthYear;
+            this.LastName = person.LastName ?? string.Empty;
+            this.MiddleName = person.MiddleName ?? string.Empty;
+            this.FirstName = person.FirstName ?? string.Empty;
+            this.BirthYear = person.BirthYear;
 
-            _hashCode = LastName.ToLowerInvariant().GetHashCode()
-                ^ FirstName.ToLowerInvariant().GetHashCode()
-                ^ MiddleName.ToLowerInvariant().GetHashCode()
-                ^ BirthYear.GetHashCode();
+            _hashCode = this.LastName.ToLowerInvariant().GetHashCode()
+                ^ this.FirstName.ToLowerInvariant().GetHashCode()
+                ^ this.MiddleName.ToLowerInvariant().GetHashCode()
+                ^ this.BirthYear.GetHashCode();
         }
 
         public override int GetHashCode() => _hashCode;
 
-        public override bool Equals(object obj) => Equals(obj as PersonKey);
+        public override bool Equals(object obj) => this.Equals(obj as PersonKey);
 
         public bool Equals(PersonKey other)
         {
@@ -134,14 +134,14 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML
                 return false;
             }
 
-            var equals = string.Equals(LastName, other.LastName, StringComparison.InvariantCultureIgnoreCase)
-                 && string.Equals(MiddleName, other.MiddleName, StringComparison.InvariantCultureIgnoreCase)
-                 && string.Equals(FirstName, other.FirstName, StringComparison.InvariantCultureIgnoreCase)
-                 && BirthYear == other.BirthYear;
+            var equals = string.Equals(this.LastName, other.LastName, StringComparison.InvariantCultureIgnoreCase)
+                 && string.Equals(this.MiddleName, other.MiddleName, StringComparison.InvariantCultureIgnoreCase)
+                 && string.Equals(this.FirstName, other.FirstName, StringComparison.InvariantCultureIgnoreCase)
+                 && this.BirthYear == other.BirthYear;
 
             return equals;
         }
 
-        public override string ToString() => FormattedNameWithMarkers;
+        public override string ToString() => this.FormattedNameWithMarkers;
     }
 }

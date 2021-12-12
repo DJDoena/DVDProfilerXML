@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
-using DoenaSoft.DVDProfiler.DVDProfilerHelper;
-
-// 
+﻿// 
 // xsd.exe /c /l:cs /f /n:DoenaSoft.DVDProfiler.DVDProfilerXML.Version400 DVDProfiler400.xsd
 //
 
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
-    public partial class Collection
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Xml;
+    using System.Xml.Serialization;
+    using DVDProfilerHelper;
+
+    partial class Collection
     {
         [XmlIgnore]
         public static readonly Encoding DefaultEncoding;
@@ -93,7 +93,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         public static Encoding DefaultEncoding => Collection.DefaultEncoding;
 
         [XmlIgnore]
-        public string[] CountryOfOriginList => (CountryOfOriginEnumerable.ToArray());
+        public string[] CountryOfOriginList => (this.CountryOfOriginEnumerable.ToArray());
 
         private IEnumerable<string> CountryOfOriginEnumerable
         {
@@ -138,7 +138,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             return sb.ToString();
         }
 
-        public override bool Equals(object obj) => Equals(obj as DVD);
+        public override bool Equals(object obj) => this.Equals(obj as DVD);
 
         public override int GetHashCode() => ID.GetHashCode();
 
@@ -217,7 +217,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         public override int GetHashCode() => Value.GetHashCode();
 
-        public override bool Equals(object obj) => Equals(obj as CollectionType);
+        public override bool Equals(object obj) => this.Equals(obj as CollectionType);
 
         public bool Equals(CollectionType other)
         {
@@ -556,52 +556,52 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public CrewMember()
         {
-            FirstName = string.Empty;
-            MiddleName = string.Empty;
-            LastName = string.Empty;
+            this.FirstName = string.Empty;
+            this.MiddleName = string.Empty;
+            this.LastName = string.Empty;
             CreditType = string.Empty;
             CreditSubtype = string.Empty;
             CustomRole = string.Empty;
-            CreditedAs = string.Empty;
+            this.CreditedAs = string.Empty;
         }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(FirstName) == false)
+            if (string.IsNullOrEmpty(this.FirstName) == false)
             {
-                sb.Append(FirstName);
+                sb.Append(this.FirstName);
             }
 
-            if (string.IsNullOrEmpty(MiddleName) == false)
+            if (string.IsNullOrEmpty(this.MiddleName) == false)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append(" ");
                 }
 
-                sb.Append(MiddleName);
+                sb.Append(this.MiddleName);
             }
 
-            if (string.IsNullOrEmpty(LastName) == false)
+            if (string.IsNullOrEmpty(this.LastName) == false)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append(" ");
                 }
 
-                sb.Append(LastName);
+                sb.Append(this.LastName);
             }
 
-            if (BirthYear > 0)
+            if (this.BirthYear > 0)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append(" ");
                 }
 
-                sb.Append("(" + BirthYear + ")");
+                sb.Append("(" + this.BirthYear + ")");
             }
 
             sb.Append(": ");
@@ -616,10 +616,10 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append(")");
             }
 
-            if (string.IsNullOrEmpty(CreditedAs) == false)
+            if (string.IsNullOrEmpty(this.CreditedAs) == false)
             {
                 sb.Append(" (as ");
-                sb.Append(CreditedAs);
+                sb.Append(this.CreditedAs);
                 sb.Append(")");
             }
 
@@ -634,50 +634,50 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
     {
         public CastMember()
         {
-            FirstName = string.Empty;
-            MiddleName = string.Empty;
-            LastName = string.Empty;
+            this.FirstName = string.Empty;
+            this.MiddleName = string.Empty;
+            this.LastName = string.Empty;
             Role = string.Empty;
-            CreditedAs = string.Empty;
+            this.CreditedAs = string.Empty;
         }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(FirstName) == false)
+            if (string.IsNullOrEmpty(this.FirstName) == false)
             {
-                sb.Append(FirstName);
+                sb.Append(this.FirstName);
             }
 
-            if (string.IsNullOrEmpty(MiddleName) == false)
+            if (string.IsNullOrEmpty(this.MiddleName) == false)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append(" ");
                 }
 
-                sb.Append(MiddleName);
+                sb.Append(this.MiddleName);
             }
 
-            if (string.IsNullOrEmpty(LastName) == false)
+            if (string.IsNullOrEmpty(this.LastName) == false)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append(" ");
                 }
 
-                sb.Append(LastName);
+                sb.Append(this.LastName);
             }
 
-            if (BirthYear > 0)
+            if (this.BirthYear > 0)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append(" ");
                 }
 
-                sb.Append("(" + BirthYear + ")");
+                sb.Append("(" + this.BirthYear + ")");
             }
 
             sb.Append(": ");
@@ -693,10 +693,10 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                 sb.Append(" (uncredited)");
             }
 
-            if (string.IsNullOrEmpty(CreditedAs) == false)
+            if (string.IsNullOrEmpty(this.CreditedAs) == false)
             {
                 sb.Append(" (as ");
-                sb.Append(CreditedAs);
+                sb.Append(this.CreditedAs);
                 sb.Append(")");
             }
 

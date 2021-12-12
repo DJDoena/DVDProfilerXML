@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using System.Windows.Forms;
-using DoenaSoft.DVDProfiler.DVDProfilerHelper;
-
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+    using DVDProfilerHelper;
+
     public static class Utilities
     {
         #region Public Methods

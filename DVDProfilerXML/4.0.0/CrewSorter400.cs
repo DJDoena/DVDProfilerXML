@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-
-namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
+﻿namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+
     public static class CrewSorter
     {
         private class CrewComparer : IComparable<CrewComparer>
         {
             private int EpisodeId { get; set; }
+
+            private int GroupId { get; set; }
 
             private int OriginalOrderId { get; set; }
 
@@ -16,22 +18,25 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
             private CrewDivider CrewDivider { get; set; }
 
-            internal object CrewEntry => (CrewMember != null) ? (object)CrewMember : CrewDivider;
+            internal object CrewEntry => (this.CrewMember != null)
+                ? (object)this.CrewMember
+                : this.CrewDivider;
 
-            private CrewComparer(int episodeId, int originalOrderId)
+            private CrewComparer(int episodeId, int groupId, int originalOrderId)
             {
-                EpisodeId = episodeId;
-                OriginalOrderId = originalOrderId;
+                this.EpisodeId = episodeId;
+                this.GroupId = groupId;
+                this.OriginalOrderId = originalOrderId;
             }
 
-            internal CrewComparer(int episodeId, int originalOrderId, CrewMember crewMember) : this(episodeId, originalOrderId)
+            internal CrewComparer(int episodeId, int groupId, int originalOrderId, CrewMember crewMember) : this(episodeId, groupId, originalOrderId)
             {
-                CrewMember = crewMember;
+                this.CrewMember = crewMember;
             }
 
-            internal CrewComparer(int episodeId, int originalOrderId, CrewDivider crewDivider) : this(episodeId, originalOrderId)
+            internal CrewComparer(int episodeId, int groupId, int originalOrderId, CrewDivider crewDivider) : this(episodeId, groupId, originalOrderId)
             {
-                CrewDivider = crewDivider;
+                this.CrewDivider = crewDivider;
             }
 
             public int CompareTo(CrewComparer other)
@@ -41,21 +46,28 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                     return 1;
                 }
 
-                var compare = EpisodeId.CompareTo(other.EpisodeId);
+                var compare = this.EpisodeId.CompareTo(other.EpisodeId);
 
                 if (compare != 0)
                 {
                     return compare;
                 }
 
-                compare = GetCompareValue(CrewEntry, other.CrewEntry);
+                compare = this.GroupId.CompareTo(other.GroupId);
 
                 if (compare != 0)
                 {
                     return compare;
                 }
 
-                return OriginalOrderId.CompareTo(other.OriginalOrderId);
+                compare = GetCompareValue(this.CrewEntry, other.CrewEntry);
+
+                if (compare != 0)
+                {
+                    return compare;
+                }
+
+                return this.OriginalOrderId.CompareTo(other.OriginalOrderId);
             }
 
             private static int GetCompareValue(object left, object right)
@@ -175,6 +187,8 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
             var currentEpisodeId = 0;
 
+            var currentGrounpId = 0;
+
             var originalOrderId = 0;
 
             foreach (var crewEntry in unsortedCrew.CrewList)
@@ -185,12 +199,16 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
                     {
                         currentEpisodeId++;
                     }
+                    else if (divider.Type == DividerType.Group)
+                    {
+                        currentGrounpId++;
+                    }
 
-                    sortedList.Add(new CrewComparer(currentEpisodeId, originalOrderId, divider));
+                    sortedList.Add(new CrewComparer(currentEpisodeId, currentGrounpId, originalOrderId, divider));
                 }
                 else
                 {
-                    sortedList.Add(new CrewComparer(currentEpisodeId, originalOrderId, crewEntry as CrewMember));
+                    sortedList.Add(new CrewComparer(currentEpisodeId, currentGrounpId, originalOrderId, crewEntry as CrewMember));
                 }
 
                 originalOrderId++;
