@@ -5,11 +5,11 @@
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Doena Soft.")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © Doena Soft. 2010 - 2021")]
+[assembly: AssemblyCopyright("Copyright © Doena Soft. 2010 - 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("4.1.1.2")]
-[assembly: AssemblyFileVersion("4.1.1.2")]
+[assembly: AssemblyVersion("4.1.1.3")]
+[assembly: AssemblyFileVersion("4.1.1.3")]
 
 [assembly: AssemblyDelaySign(false)]
