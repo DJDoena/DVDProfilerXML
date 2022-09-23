@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
-    <AssemblyName>DVDProfilerXML</AssemblyName>
+    <AssemblyName>DoenaSoft.DVDProfilerXML</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -33,16 +33,18 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\DVDProfilerXML\</OutputPath>
+    <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x86\DVDProfilerXML\DVDProfilerXML.xml</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
     <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -60,7 +62,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x64\Debug\DVDProfilerXML.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Debug\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
     <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
@@ -73,7 +75,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x86\Release\DVDProfilerXML.xml</DocumentationFile>
+    <DocumentationFile>bin\x86\Release\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
@@ -87,7 +89,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x64\Release\DVDProfilerXML.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Release\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
@@ -193,6 +195,8 @@
     <None Include="DJDSOFT.ICO">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="DoenaSoft.DVDProfilerXML.props" />
+    <None Include="DVDProfilerXML.nuspec" />
     <None Include="DVDProfilerXML.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -213,10 +217,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DVDProfilerHelper\DVDProfilerHelper\DVDProfilerHelper.csproj">
-      <Project>{461dacca-8ebf-4c03-ad1a-c438e4eb3b36}</Project>
-      <Name>DVDProfilerHelper</Name>
-    </ProjectReference>
+    <PackageReference Include="DoenaSoft.DVDProfilerHelper">
+      <Version>2.2.9</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="djdsoft.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

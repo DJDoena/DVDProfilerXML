@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>DoenaSoft.DVDProfilerXML</id>
+    <version>4.1.2</version>
+    <title>DoenaSoft.DVDProfilerXML</title>
+    <authors>DJ Doena</authors>
+    <icon>images\djdsoft.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/DJDoena/DVDProfilerHelper</projectUrl>
+    <description>Helper functions for the DVD Profiler application by Invelos that deals with the XML export</description>
+    <copyright>2010 - 2022</copyright>
+    <tags>dvd-profiler, dvdprofiler, invelos</tags>
+    <dependencies>
+      <dependency id="DoenaSoft.DVDProfilerHelper" version="2.2.9" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\x64\Release\DoenaSoft.DVDProfilerXML.dll" target="build\x64\DoenaSoft.DVDProfilerXML.dll" />
+    <file src="bin\x64\Release\DoenaSoft.DVDProfilerXML.xml" target="build\x64\DoenaSoft.DVDProfilerXML.xml" />
+
+    <file src="bin\x86\Release\DoenaSoft.DVDProfilerXML.dll" target="build\x86\DoenaSoft.DVDProfilerXML.dll" />
+    <file src="bin\x86\Release\DoenaSoft.DVDProfilerXML.xml" target="build\x86\DoenaSoft.DVDProfilerXML.xml" />
+    
+    <file src="DoenaSoft.DVDProfilerXML.props" target="build\net452" />
+    <file src="djdsoft.png" target="images\" />
+</files>
+</package>
