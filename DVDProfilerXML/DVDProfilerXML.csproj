@@ -243,7 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DoenaSoft.DVDProfilerHelper">
-      <Version>2.2.11</Version>
+      <Version>2.2.12</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
