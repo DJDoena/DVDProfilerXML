@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DoenaSoft.DVDProfilerXML</id>
-    <version>4.1.5</version>
+    <version>4.1.6</version>
     <title>DoenaSoft.DVDProfilerXML</title>
     <authors>DJ Doena</authors>
     <icon>images\djdsoft.png</icon>
@@ -13,7 +13,7 @@
     <copyright>2010 - 2022</copyright>
     <tags>dvd-profiler, dvdprofiler, invelos</tags>
     <dependencies>
-      <dependency id="DoenaSoft.DVDProfilerHelper" version="2.2.11" />
+      <dependency id="DoenaSoft.DVDProfilerHelper" version="2.2.12" />
     </dependencies>
   </metadata>
   <files>
