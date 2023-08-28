@@ -1,9 +1,9 @@
+using System.Collections.Generic;
+using System.Windows.Forms;
+using DoenaSoft.ToolBox.Generics;
+
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
-    using System.Collections.Generic;
-    using System.Windows.Forms;
-    using DVDProfilerHelper;
-
     public static class Utilities
     {
         #region Public Methods
@@ -106,7 +106,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
-                castInformation = DVDProfilerSerializer<CastInformation>.FromString(xml, CastInformation.DefaultEncoding);
+                castInformation = Serializer<CastInformation>.FromString(xml, CastInformation.DefaultEncoding);
 
                 return true;
             }
@@ -126,7 +126,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
-                crewInformation = DVDProfilerSerializer<CrewInformation>.FromString(xml, CrewInformation.DefaultEncoding);
+                crewInformation = Serializer<CrewInformation>.FromString(xml, CrewInformation.DefaultEncoding);
 
                 return true;
             }
@@ -140,7 +140,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         public static string CopyCastInformationToClipboard(CastInformation castInformation, bool silent = false)
         {
-            var xml = DVDProfilerSerializer<CastInformation>.ToString(castInformation, CastInformation.DefaultEncoding);
+            var xml = Serializer<CastInformation>.ToString(castInformation, CastInformation.DefaultEncoding);
 
             if (silent == false)
             {
@@ -159,7 +159,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             crewInformation = CrewSorter.GetSortedCrew(crewInformation);
 
-            var xml = DVDProfilerSerializer<CrewInformation>.ToString(crewInformation, CrewInformation.DefaultEncoding);
+            var xml = Serializer<CrewInformation>.ToString(crewInformation, CrewInformation.DefaultEncoding);
 
             if (silent == false)
             {

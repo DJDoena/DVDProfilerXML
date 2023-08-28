@@ -1,260 +1,74 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2E90CC6F-892E-45B3-8812-EE52FFA3B222}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
-    <AssemblyName>DoenaSoft.DVDProfilerXML</AssemblyName>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x86\Debug\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
-    <NoWarn>CS1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>DVDProfilerXML.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x64\Debug\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
-    <NoWarn>CS1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x86\Release\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <NoWarn>CS1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x64\Release\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <NoWarn>CS1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\Debug\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
-    <NoWarn>CS1591</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>bin\Release\DoenaSoft.DVDProfilerXML.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <NoWarn>CS1591</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="3.9.0\CollectionTree390.cs" />
-    <Compile Include="3.9.0\CrewSorter390.cs" />
-    <Compile Include="3.9.0\DVDProfiler390.cs">
-      <DependentUpon>DVDProfiler390.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="3.9.0\DVDProfiler390.NotGenerated.cs">
-      <DependentUpon>DVDProfiler390.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="3.8.1\CollectionTree381.cs" />
-    <Compile Include="3.8.1\CrewSorter381.cs" />
-    <Compile Include="4.0.0\CollectionTree400.cs" />
-    <Compile Include="4.0.0\CrewSorter400.cs" />
-    <Compile Include="4.0.0\DVDProfiler400.cs">
-      <DependentUpon>DVDProfiler400.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="4.0.0\DVDProfiler400.NotGenerated.cs">
-      <DependentUpon>DVDProfiler400.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="4.0.0\Localities400.cs">
-      <DependentUpon>Localities400.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="4.0.0\Localities400.NotGenerated.cs">
-      <DependentUpon>Localities400.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="4.0.0\Utilities400.cs" />
-    <Compile Include="IPerson.cs" />
-    <Compile Include="PersonKey.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="3.9.0\Utilities390.cs" />
-    <Compile Include="3.8.1\Utilities381.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="3.6.0\Localities360.xsd" />
-    <Compile Include="3.6.0\Localities360.cs">
-      <DependentUpon>Localities360.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="3.5.1\DVDProfiler351.xsd" />
-    <Compile Include="3.5.1\DVDProfiler351.cs">
-      <DependentUpon>DVDProfiler351.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="3.6.0\DVDProfiler360.xsd">
-    </EmbeddedResource>
-    <Compile Include="3.6.0\DVDProfiler360.cs">
-      <DependentUpon>DVDProfiler360.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="3.8.0\DVDProfiler380.xsd" />
-    <Compile Include="3.8.0\DVDProfiler380.cs">
-      <DependentUpon>DVDProfiler380.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="3.8.0\DVDProfiler380.NotGenerated.cs">
-      <DependentUpon>DVDProfiler380.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="3.8.1\DVDProfiler381.xsd" />
-    <Compile Include="3.8.1\DVDProfiler381.cs">
-      <DependentUpon>DVDProfiler381.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="3.8.1\DVDProfiler381.NotGenerated.cs">
-      <DependentUpon>DVDProfiler381.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="3.8.1\COOs381.xsd" />
-    <Compile Include="3.8.1\COOs381.cs">
-      <DependentUpon>COOs381.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="3.8.1\COOs381.NotGerated.cs">
-      <DependentUpon>COOs381.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="3.8.1\Localities381.xsd" />
-    <Compile Include="3.8.1\Localities381.cs">
-      <DependentUpon>Localities381.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="3.8.1\Localities381.NotGenerated.cs">
-      <DependentUpon>Localities381.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="3.9.0\DVDProfiler390.xsd" />
-    <None Include="4.0.0\DVDProfiler400.xsd" />
-    <EmbeddedResource Include="4.0.0\Localities400.xsd">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="DJDSOFT.ICO">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DoenaSoft.DVDProfilerXML.props" />
-    <None Include="DVDProfilerXML.nuspec" />
-    <None Include="DVDProfilerXML.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="DoenaSoft.DVDProfilerHelper">
-      <Version>2.2.14</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="djdsoft.png" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net472</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<Platforms>AnyCPU</Platforms>
+		<OutputType>Library</OutputType>
+		<RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
+		<AssemblyName>DoenaSoft.DVDProfilerXML</AssemblyName>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<NoWarn>1701;1702;1591</NoWarn>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>DVDProfilerXML.snk</AssemblyOriginatorKeyFile>
+		<Title>DoenaSoft.DVDProfilerXML</Title>
+		<Company>Doena Soft.</Company>
+		<Authors>DJ Doena</Authors>
+		<Description>Helper functions for the DVD Profiler application by Invelos that deals with the XML export</Description>
+		<Copyright>2010 - 2023</Copyright>
+		<PackageProjectUrl>https://github.com/DJDoena/DVDProfilerXML</PackageProjectUrl>
+		<PackageIcon>djdsoft.png</PackageIcon>
+		<RepositoryUrl>https://github.com/DJDoena/DVDProfilerXML</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>dvd-profiler, dvdprofiler, invelos</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Version>5.0.0</Version>
+		<FileVersion>5.0.0</FileVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
+
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
+	  <NoWarn>1701;1702;1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\djdsoft.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DoenaSoft.DVDProfilerHelper" Version="3.0.0" />
+		<PackageReference Include="DoenaSoft.ToolBox" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="3.8.1\DVDProfiler380.NotGenerated.cs">
+			<DependentUpon>DVDProfiler380.xsd</DependentUpon>
+		</Compile>
+		<Compile Update="3.8.1\Localities381.NotGenerated.cs">
+			<DependentUpon>Localities381.xsd</DependentUpon>
+		</Compile>
+		<Compile Update="3.8.1\DVDProfiler381.NotGenerated.cs">
+			<DependentUpon>DVDProfiler381.xsd</DependentUpon>
+		</Compile>
+		<Compile Update="3.8.1\COOs381.NotGenerated.cs">
+			<DependentUpon>COOs381.xsd</DependentUpon>
+		</Compile>
+		<Compile Update="3.9.0\DVDProfiler390.NotGenerated.cs">
+			<DependentUpon>DVDProfiler390.xsd</DependentUpon>
+		</Compile>
+		<Compile Update="4.0.0\DVDProfiler400.NotGenerated.cs">
+			<DependentUpon>DVDProfiler400.xsd</DependentUpon>
+		</Compile>
+		<Compile Update="4.0.0\Localities400.NotGenerated.cs">
+			<DependentUpon>Localities400.xsd</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
 </Project>

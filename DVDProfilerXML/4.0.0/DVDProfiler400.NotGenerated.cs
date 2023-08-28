@@ -1,18 +1,18 @@
-﻿// 
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using DoenaSoft.ToolBox.Generics;
+
+// 
 // xsd.exe /c /l:cs /f /n:DoenaSoft.DVDProfiler.DVDProfilerXML.Version400 DVDProfiler400.xsd
 //
 
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Xml;
-    using System.Xml.Serialization;
-    using DVDProfilerHelper;
-
-    partial class Collection
+    public partial class Collection
     {
         [XmlIgnore]
         public static readonly Encoding DefaultEncoding;
@@ -26,7 +26,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             encoding = encoding ?? DefaultEncoding;
 
-            DVDProfilerSerializer<Collection>.Serialize(fileName, this, encoding);
+            Serializer<Collection>.Serialize(fileName, this, encoding);
         }
 
         public override string ToString()
@@ -109,7 +109,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             encoding = encoding ?? DefaultEncoding;
 
-            DVDProfilerSerializer<DVD>.Serialize(fileName, this, encoding);
+            Serializer<DVD>.Serialize(fileName, this, encoding);
         }
 
         public override string ToString()
@@ -858,7 +858,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             encoding = encoding ?? DefaultEncoding;
 
-            DVDProfilerSerializer<CastInformation>.Serialize(fileName, this, encoding);
+            Serializer<CastInformation>.Serialize(fileName, this, encoding);
         }
 
         public override string ToString()
@@ -901,7 +901,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             encoding = encoding ?? DefaultEncoding;
 
-            DVDProfilerSerializer<CrewInformation>.Serialize(fileName, this, encoding);
+            Serializer<CrewInformation>.Serialize(fileName, this, encoding);
         }
 
         public override string ToString()
