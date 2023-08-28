@@ -1,9 +1,9 @@
-﻿namespace DoenaSoft.DVDProfiler.DVDProfilerXML
-{
-    using System;
-    using System.ComponentModel;
-    using System.Text;
+﻿using System;
+using System.ComponentModel;
+using System.Text;
 
+namespace DoenaSoft.DVDProfiler.DVDProfilerXML
+{
     /// <summary>
     /// This object can be used as key in hashtables and dictionaries.
     /// </summary>

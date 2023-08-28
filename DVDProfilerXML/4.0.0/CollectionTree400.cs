@@ -1,8 +1,8 @@
-﻿namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
-{
-    using System.Collections.Generic;
-    using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
+namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
+{
     public sealed class CollectionTree
     {
         public List<DVDNode> DVDList;

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Windows.Forms;
+using DoenaSoft.AbstractionLayer.UIServices;
 using DoenaSoft.ToolBox.Generics;
 
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
@@ -98,11 +98,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
         #region Clipboard
 
-        public static bool TryGetCastInformationFromClipboard(out CastInformation castInformation)
+        public static bool TryGetCastInformationFromClipboard(out CastInformation castInformation, IClipboardServices clipboardServices = null)
         {
             try
             {
-                var xml = Clipboard.GetText();
+                var xml = (clipboardServices ?? new FormClipboardServices()).GetText();
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
@@ -118,11 +118,12 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             }
         }
 
-        public static bool TryGetCrewInformationFromClipboard(out CrewInformation crewInformation)
+        public static bool TryGetCrewInformationFromClipboard(out CrewInformation crewInformation
+            , IClipboardServices clipboardServices = null)
         {
             try
             {
-                var xml = Clipboard.GetText();
+                var xml = (clipboardServices ?? new FormClipboardServices()).GetText();
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
@@ -138,7 +139,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             }
         }
 
-        public static string CopyCastInformationToClipboard(CastInformation castInformation, bool silent = false)
+        public static string CopyCastInformationToClipboard(CastInformation castInformation
+            , bool silent = false
+            , IClipboardServices clipboardServices = null)
         {
             var xml = Serializer<CastInformation>.ToString(castInformation, CastInformation.DefaultEncoding);
 
@@ -146,16 +149,18 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             {
                 try
                 {
-                    Clipboard.SetDataObject(xml, true, 4, 250);
+                    (clipboardServices ?? new FormClipboardServices()).SetDataObject(xml, true, 4, 250);
                 }
                 catch
                 { }
             }
 
-            return (xml);
+            return xml;
         }
 
-        public static string CopyCrewInformationToClipboard(CrewInformation crewInformation, bool silent = false)
+        public static string CopyCrewInformationToClipboard(CrewInformation crewInformation
+            , bool silent = false
+            , IClipboardServices clipboardServices = null)
         {
             crewInformation = CrewSorter.GetSortedCrew(crewInformation);
 
@@ -165,7 +170,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             {
                 try
                 {
-                    Clipboard.SetDataObject(xml, true, 4, 250);
+                    (clipboardServices ?? new FormClipboardServices()).SetDataObject(xml, true, 4, 250);
                 }
                 catch
                 { }

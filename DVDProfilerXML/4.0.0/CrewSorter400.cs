@@ -1,9 +1,9 @@
-﻿namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
+namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
+{
     public static class CrewSorter
     {
         private class CrewComparer : IComparable<CrewComparer>
