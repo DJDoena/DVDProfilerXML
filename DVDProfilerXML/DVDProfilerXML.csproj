@@ -21,9 +21,35 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>dvd-profiler, dvdprofiler, invelos</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>5.0.3</Version>
-		<FileVersion>5.0.3</FileVersion>
+		<Version>5.0.4</Version>
+		<FileVersion>5.0.4</FileVersion>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="3.5.1\DVDProfiler351.xsd" />
+	  <None Remove="3.6.0\DVDProfiler360.xsd" />
+	  <None Remove="3.6.0\Localities360.xsd" />
+	  <None Remove="3.8.0\DVDProfiler380.xsd" />
+	  <None Remove="3.8.1\COOs381.xsd" />
+	  <None Remove="3.8.1\DVDProfiler381.xsd" />
+	  <None Remove="3.8.1\Localities381.xsd" />
+	  <None Remove="3.9.0\DVDProfiler390.xsd" />
+	  <None Remove="4.0.0\DVDProfiler400.xsd" />
+	  <None Remove="4.0.0\Localities400.xsd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="3.5.1\DVDProfiler351.xsd" />
+	  <Content Include="3.6.0\DVDProfiler360.xsd" />
+	  <Content Include="3.6.0\Localities360.xsd" />
+	  <Content Include="3.8.0\DVDProfiler380.xsd" />
+	  <Content Include="3.8.1\COOs381.xsd" />
+	  <Content Include="3.8.1\DVDProfiler381.xsd" />
+	  <Content Include="3.8.1\Localities381.xsd" />
+	  <Content Include="3.9.0\DVDProfiler390.xsd" />
+	  <Content Include="4.0.0\DVDProfiler400.xsd" />
+	  <Content Include="4.0.0\Localities400.xsd" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\djdsoft.png">
