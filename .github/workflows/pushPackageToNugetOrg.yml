@@ -10,7 +10,7 @@ on:
       
 env:
   SOURCE_URL: https://api.nuget.org/v3/index.json
-  PROJECT_FILE: DVDProfilerXML.csproj
+  PROJECT_FILE: DVDProfiler.Xml.csproj
   PROJECT_FOLDER: DVDProfilerXML
   BUILD_CONFIGURATION: Release
   
