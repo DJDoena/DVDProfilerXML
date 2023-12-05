@@ -21,10 +21,11 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>dvd-profiler, dvdprofiler, invelos</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>5.0.7</Version>
-		<FileVersion>5.0.7</FileVersion>
+		<Version>5.0.8</Version>
+		<FileVersion>5.0.8</FileVersion>
 		<DebugType>portable</DebugType>
 		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -61,8 +62,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.6" />
-		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.7" />
+		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.7" />
+		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
