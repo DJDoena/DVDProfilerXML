@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net472</TargetFrameworks>
+		<TargetFrameworks>net472;net6.0-windows;net8.0-windows</TargetFrameworks>
 		<Platforms>AnyCPU</Platforms>
 		<OutputType>Library</OutputType>
 		<RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
@@ -21,8 +21,8 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>dvd-profiler, dvdprofiler, invelos</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>5.0.9</Version>
-		<FileVersion>5.0.9</FileVersion>
+		<Version>5.0.10</Version>
+		<FileVersion>5.0.10</FileVersion>
 		<DebugType>portable</DebugType>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -62,8 +62,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.8" />
-		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.8" />
+		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.9" />
+		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
