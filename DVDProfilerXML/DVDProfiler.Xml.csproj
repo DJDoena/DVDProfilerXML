@@ -14,15 +14,15 @@
 		<Company>Doena Soft.</Company>
 		<Authors>DJ Doena</Authors>
 		<Description>Helper functions for the DVD Profiler application by Invelos that deals with the XML export</Description>
-		<Copyright>2010 - 2023</Copyright>
+		<Copyright>2010 - 2024</Copyright>
 		<PackageProjectUrl>https://github.com/DJDoena/DVDProfilerXML</PackageProjectUrl>
 		<PackageIcon>djdsoft.png</PackageIcon>
 		<RepositoryUrl>https://github.com/DJDoena/DVDProfilerXML</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>dvd-profiler, dvdprofiler, invelos</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>5.0.8</Version>
-		<FileVersion>5.0.8</FileVersion>
+		<Version>5.0.9</Version>
+		<FileVersion>5.0.9</FileVersion>
 		<DebugType>portable</DebugType>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -62,7 +62,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.7" />
+		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.8" />
 		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.8" />
 	</ItemGroup>
 
