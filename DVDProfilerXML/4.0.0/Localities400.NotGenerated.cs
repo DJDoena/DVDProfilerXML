@@ -16,7 +16,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400.Localities
 
             if (File.Exists(fileName))
             {
-                var localities = Serializer<Localities>.Deserialize(fileName);
+                var localities = XmlSerializer<Localities>.Deserialize(fileName);
 
                 return localities;
             }

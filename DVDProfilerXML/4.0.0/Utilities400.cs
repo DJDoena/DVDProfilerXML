@@ -106,7 +106,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
-                castInformation = Serializer<CastInformation>.FromString(xml, CastInformation.DefaultEncoding);
+                castInformation = XmlSerializer<CastInformation>.FromString(xml, CastInformation.DefaultEncoding);
 
                 return true;
             }
@@ -127,7 +127,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
 
                 xml = xml.Replace("\"False\"", "\"false\"").Replace("\"True\"", "\"true\"");
 
-                crewInformation = Serializer<CrewInformation>.FromString(xml, CrewInformation.DefaultEncoding);
+                crewInformation = XmlSerializer<CrewInformation>.FromString(xml, CrewInformation.DefaultEncoding);
 
                 return true;
             }
@@ -143,7 +143,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
             , bool silent = false
             , IClipboardServices clipboardServices = null)
         {
-            var xml = Serializer<CastInformation>.ToString(castInformation, CastInformation.DefaultEncoding);
+            var xml = XmlSerializer<CastInformation>.ToString(castInformation, CastInformation.DefaultEncoding);
 
             if (silent == false)
             {
@@ -164,7 +164,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML.Version400
         {
             crewInformation = CrewSorter.GetSortedCrew(crewInformation);
 
-            var xml = Serializer<CrewInformation>.ToString(crewInformation, CrewInformation.DefaultEncoding);
+            var xml = XmlSerializer<CrewInformation>.ToString(crewInformation, CrewInformation.DefaultEncoding);
 
             if (silent == false)
             {
