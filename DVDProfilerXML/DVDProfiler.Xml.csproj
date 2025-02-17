@@ -1,31 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<AssemblyName>DoenaSoft.DVDProfiler.Xml</AssemblyName>
+		<RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
+		<OutputType>Library</OutputType>
 		<TargetFrameworks>net472;net6.0-windows;net8.0-windows</TargetFrameworks>
 		<Platforms>AnyCPU</Platforms>
-		<OutputType>Library</OutputType>
-		<RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
-		<AssemblyName>DoenaSoft.DVDProfiler.Xml</AssemblyName>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DebugType>portable</DebugType>
+		<IncludeSymbols>true</IncludeSymbols>
 		<NoWarn>1701;1702;1591</NoWarn>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>DVDProfilerXML.snk</AssemblyOriginatorKeyFile>
 		<Title>DoenaSoft.DVDProfiler.Xml</Title>
-		<Company>Doena Soft.</Company>
-		<Authors>DJ Doena</Authors>
-		<Description>Helper functions for the DVD Profiler application by Invelos that deals with the XML export</Description>
-		<Copyright>2010 - 2024</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/DJDoena/DVDProfilerXML</PackageProjectUrl>
-		<PackageIcon>djdsoft.png</PackageIcon>
 		<RepositoryUrl>https://github.com/DJDoena/DVDProfilerXML</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>dvd-profiler, dvdprofiler, invelos</PackageTags>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>5.0.10</Version>
-		<FileVersion>5.0.10</FileVersion>
-		<DebugType>portable</DebugType>
-		<IncludeSymbols>true</IncludeSymbols>
+		<PackageIcon>djdsoft.png</PackageIcon>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Description>Helper functions for the DVD Profiler application by Invelos that deals with the XML export</Description>
+		<Company>Doena Soft.</Company>
+		<Authors>DJ Doena</Authors>
+		<Copyright>2010 - 2025</Copyright>
+		<Version>5.0.11</Version>
+		<FileVersion>5.0.11</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -63,7 +63,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.9" />
-		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.9" />
+		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.11" />
 	</ItemGroup>
 
 	<ItemGroup>
