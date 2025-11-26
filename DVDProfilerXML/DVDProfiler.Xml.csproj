@@ -24,8 +24,8 @@
 		<Company>Doena Soft.</Company>
 		<Authors>DJ Doena</Authors>
 		<Copyright>2010 - 2025</Copyright>
-		<Version>5.0.11</Version>
-		<FileVersion>5.0.11</FileVersion>
+		<Version>5.0.12</Version>
+		<FileVersion>5.0.12</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -63,7 +63,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.9" />
-		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.12" />
+		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.13" />
 	</ItemGroup>
 
 	<ItemGroup>
