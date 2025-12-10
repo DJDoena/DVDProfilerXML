@@ -23,9 +23,9 @@
 		<Description>Helper functions for the DVD Profiler application by Invelos that deals with the XML export</Description>
 		<Company>Doena Soft.</Company>
 		<Authors>DJ Doena</Authors>
-		<Copyright>2010 - 2025</Copyright>
-		<Version>5.0.12</Version>
-		<FileVersion>5.0.12</FileVersion>
+		<Copyright>Copyright © Doena Soft. 2010 - 2025</Copyright>
+		<Version>5.0.13</Version>
+		<FileVersion>5.0.13</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -63,7 +63,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.9" />
-		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.13" />
+		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.14" />
 	</ItemGroup>
 
 	<ItemGroup>
