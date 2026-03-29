@@ -4,8 +4,9 @@
 		<AssemblyName>DoenaSoft.DVDProfiler.Xml</AssemblyName>
 		<RootNamespace>DoenaSoft.DVDProfiler.DVDProfilerXML</RootNamespace>
 		<OutputType>Library</OutputType>
-		<TargetFrameworks>net472;net6.0-windows;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks>net472;net10.0-windows</TargetFrameworks>
 		<Platforms>AnyCPU</Platforms>
+		<LangVersion>latest</LangVersion>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<DebugType>portable</DebugType>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -19,13 +20,14 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>dvd-profiler, dvdprofiler, invelos</PackageTags>
 		<PackageIcon>djdsoft.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<Description>Helper functions for the DVD Profiler application by Invelos that deals with the XML export</Description>
+		<Description>Strongly-typed .NET library for reading, writing, and manipulating DVD Profiler XML export files from Invelos.</Description>
 		<Company>Doena Soft.</Company>
 		<Authors>DJ Doena</Authors>
-		<Copyright>Copyright © Doena Soft. 2010 - 2025</Copyright>
-		<Version>5.0.13</Version>
-		<FileVersion>5.0.13</FileVersion>
+		<Copyright>Copyright © Doena Soft. 2010 - 2026</Copyright>
+		<Version>6.0.0</Version>
+		<FileVersion>6.0.0</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -59,11 +61,15 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="1.1.9" />
-		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="3.0.14" />
+		<PackageReference Include="DoenaSoft.AbstractionLayer.WinForms" Version="2.0.4" />
+		<PackageReference Include="DoenaSoft.DVDProfiler.Helper" Version="4.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
