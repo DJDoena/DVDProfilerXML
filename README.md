@@ -28,7 +28,6 @@ DVD Profiler is a comprehensive DVD cataloging software application developed by
 ## About This Library
 
 `DoenaSoft.DVDProfiler.Xml` is a .NET library that provides strongly-typed classes and helper functions for reading, writing, and manipulating DVD Profiler XML export files. This library eliminates the need to manually parse XML files and provides a clean, object-oriented API for working with DVD Profiler data.
-
 ## Features
 
 - **Strongly-typed classes** for all DVD Profiler XML elements
@@ -45,23 +44,23 @@ DVD Profiler is a comprehensive DVD cataloging software application developed by
 
 ### Via NuGet Package Manager
 
-`ash
+```bash
 Install-Package DoenaSoft.DVDProfiler.Xml
-`
+```
 
 ### Via .NET CLI
 
-`ash
+```bash
 dotnet add package DoenaSoft.DVDProfiler.Xml
-`
+```
 
 ### Via Package Reference
 
 Add the following to your `.csproj` file:
 
-`xml
+```xml
 <PackageReference Include="DoenaSoft.DVDProfiler.Xml" Version="6.0.0" />
-`
+```
 
 ## Supported Versions
 
@@ -78,12 +77,11 @@ This library supports the following DVD Profiler XML export versions:
 
 - **.NET Framework 4.7.2** - For legacy Windows applications
 - **.NET 10** - For modern cross-platform applications
-
 ## Usage
 
 ### Reading a DVD Profiler Collection
 
-`csharp
+```csharp
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version400;
 using System.Xml.Serialization;
 
@@ -102,11 +100,11 @@ using (var reader = new StreamReader("MyCollection.xml"))
         Console.WriteLine($"UPC: {dvd.UPC}");
     }
 }
-`
+```
 
 ### Writing a DVD Profiler Collection
 
-`csharp
+```csharp
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version400;
 using System.Text;
 
@@ -115,11 +113,10 @@ var collection = new Collection();
 
 // Serialize to XML file
 collection.Serialize("MyCollection.xml", Encoding.GetEncoding(1252));
-`
-
+```
 ### Working with DVD Data
 
-`csharp
+```csharp
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version400;
 
 // Create a new DVD entry
@@ -136,11 +133,11 @@ var dvd = new DVD
 
 // Add to collection
 collection.DVDList = new[] { dvd };
-`
+```
 
 ### Working with Cast and Crew
 
-`csharp
+```csharp
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version400;
 
 var dvd = new DVD
@@ -167,20 +164,19 @@ var dvd = new DVD
         }
     }
 };
-`
-
+```
 ### Using Version-Specific Namespaces
 
 Each DVD Profiler version has its own namespace:
 
-`csharp
+```csharp
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version351; // For 3.5.1
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version360; // For 3.6.0
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version380; // For 3.8.0
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version381; // For 3.8.1
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version390; // For 3.9.0
 using DoenaSoft.DVDProfiler.DVDProfilerXML.Version400; // For 4.0.0 (Latest)
-`
+```
 
 ## DVD Profiler Version Support
 
@@ -194,7 +190,6 @@ The library maintains backward compatibility with older DVD Profiler XML formats
 
 - **DoenaSoft.AbstractionLayer.WinForms** (v2.0.4) - Abstraction layer for Windows Forms interactions
 - **DoenaSoft.DVDProfiler.Helper** (v4.0.0) - Common helper utilities for DVD Profiler operations
-
 ## Building from Source
 
 ### Prerequisites
@@ -206,24 +201,24 @@ The library maintains backward compatibility with older DVD Profiler XML formats
 ### Build Steps
 
 1. Clone the repository:
-   `ash
+   ```bash
    git clone https://github.com/DJDoena/DVDProfilerXML.git
    cd DVDProfilerXML
-   `
+   ```
 
 2. Open the solution in Visual Studio or build from command line:
-   `ash
+   ```bash
    dotnet build
-   `
+   ```
 
 3. Run tests (if available):
-   `ash
+   ```bash
    dotnet test
-   `
+   ```
 
 ### Project Structure
 
-`
+```
 DVDProfilerXML/
 |-- 3.5.1/           # DVD Profiler 3.5.1 schema and classes
 |-- 3.6.0/           # DVD Profiler 3.6.0 schema and classes
@@ -233,8 +228,7 @@ DVDProfilerXML/
 |-- 4.0.0/           # DVD Profiler 4.0.0 schema and classes (Latest)
 |-- *.cs             # Common interfaces and utilities
 |-- DVDProfiler.Xml.csproj
-`
-
+```
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project:
