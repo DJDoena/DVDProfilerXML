@@ -1,4 +1,4 @@
-﻿# DoenaSoft.DVDProfiler.Xml
+# DoenaSoft.DVDProfiler.Xml
 
 [![NuGet](https://img.shields.io/nuget/v/DoenaSoft.DVDProfiler.Xml.svg)](https://www.nuget.org/packages/DoenaSoft.DVDProfiler.Xml/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
